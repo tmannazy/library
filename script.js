@@ -54,14 +54,30 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-let bookTitle = prompt('What is the name of the Book?');
-let bookAuthor = prompt('What is the name of the Author?');
-let bookPages = prompt('How many pages does the book have?');
-let haveReadBook = prompt('Have you read the book?');
 
 function addBookToLibrary() {
+    let bookTitle = prompt('What is the name of the Book?', 'Alice in Wonderland');
+    let bookAuthor = prompt('What is the name of the Author?', 'Chinua Achebe');
+    let bookPages = Number(prompt('How many pages does the book have?', 200));
+    let haveReadBook = prompt('Have you read the book?', 'true or false');
+    bookTitle = bookTitle.split(' ').map(item => item[0].toUpperCase()).join(' ');
     myLibrary.push({ bookTitle, bookAuthor, bookPages, haveReadBook });
 }
 
 addBookToLibrary();
-console.log(myLibrary[myLibrary.length - 1]);
+
+
+//  This function loops through the array to display the books in a table format or card.
+
+
+// Button to click and add NEW BOOK in a FORM format
+// with details for the book; Author, Title, Number of Pages, Read or not
+
+
+// Create remove button on each book display in the library.
+
+
+// Create button on each book to change the read status.
+// A isRead() on the Book prototype instance
+
+console.log(myLibrary);
