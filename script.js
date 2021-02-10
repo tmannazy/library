@@ -68,7 +68,11 @@ addBookToLibrary();
 
 
 //  This function loops through the array to display the books in a table format or card.
+const displayLibrary = () => {
+    myLibrary.map(())
+    let table = document.createElement('div');
 
+}
 
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
