@@ -54,13 +54,13 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+let bookTitle = document.getElementById('btitle').value;
+// let bookAuthor = prompt('What is the name of the Author?', 'Chinua Achebe');
+// let bookPages = Number(prompt('How many pages does the book have?', 200));
+// let haveReadBook = prompt('Have you read the book?', 'true or false');
 
 function addBookToLibrary() {
-    let bookTitle = prompt('What is the name of the Book?', 'Alice in Wonderland');
-    let bookAuthor = prompt('What is the name of the Author?', 'Chinua Achebe');
-    let bookPages = Number(prompt('How many pages does the book have?', 200));
-    let haveReadBook = prompt('Have you read the book?', 'true or false');
-    bookTitle = bookTitle.split(' ').map(item => item[0].toUpperCase()).join(' ');
+    // bookTitle = bookTitle.split('').map(item => item[0].toUpperCase()).join(' ');
     myLibrary.push({ bookTitle, bookAuthor, bookPages, haveReadBook });
 }
 
@@ -69,7 +69,7 @@ addBookToLibrary();
 
 //  This function loops through the array to display the books in a table format or card.
 const displayLibrary = () => {
-    myLibrary.map(())
+    // myLibrary.map(())
     let table = document.createElement('div');
 
 }
