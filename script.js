@@ -55,9 +55,9 @@ function Book(title, author, pages, read) {
 }
 
 let bookTitle = document.getElementById('btitle').value;
-// let bookAuthor = prompt('What is the name of the Author?', 'Chinua Achebe');
-// let bookPages = Number(prompt('How many pages does the book have?', 200));
-// let haveReadBook = prompt('Have you read the book?', 'true or false');
+let bookAuthor = document.getElementById('bauthor').value;
+let bookPages = document.getElementById('bpages').value;
+let haveReadBook = document.querySelector('input[name="rbook"]:checked').value;
 
 function addBookToLibrary() {
     // bookTitle = bookTitle.split('').map(item => item[0].toUpperCase()).join(' ');
