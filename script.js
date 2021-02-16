@@ -51,17 +51,22 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
 }
+Book.prototype = {
+    read() {
+        this.read == 'yes' ? true : false;
+    },
+    bookAdd() { myLibrary.push(this.title, this.author, this.pages, this.read) }
+};
 
-let bookTitle = document.getElementById('title').value;
-let bookAuthor = document.getElementById('author').value;
-let bookPages = document.getElementById('pages').value;
-let haveReadBook = document.querySelector('input[name="readbook"]:checked').value;
 
 function addBookToLibrary() {
-    // bookTitle = bookTitle.split('').map(item => item[0].toUpperCase()).join(' ');
-    myLibrary.push({ bookTitle, bookAuthor, bookPages, haveReadBook });
+    let bookTitle = document.getElementById('title').value;
+    let bookAuthor = document.getElementById('author').value;
+    let bookPages = document.getElementById('pages').value;
+    let haveReadBook = document.querySelector('input[name="readbook"]:checked').value;
+
+    let book1 = new Book(bookTitle, bookAuthor, bookPages, haveReadBook);
 }
 
 addBookToLibrary();
