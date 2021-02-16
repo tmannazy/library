@@ -54,10 +54,10 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-let bookTitle = document.getElementById('btitle').value;
-let bookAuthor = document.getElementById('bauthor').value;
-let bookPages = document.getElementById('bpages').value;
-let haveReadBook = document.querySelector('input[name="rbook"]:checked').value;
+let bookTitle = document.getElementById('title').value;
+let bookAuthor = document.getElementById('author').value;
+let bookPages = document.getElementById('pages').value;
+let haveReadBook = document.querySelector('input[name="readbook"]:checked').value;
 
 function addBookToLibrary() {
     // bookTitle = bookTitle.split('').map(item => item[0].toUpperCase()).join(' ');
