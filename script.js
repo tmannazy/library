@@ -44,7 +44,12 @@ let myLibrary = [{
     pages: 388,
     read: false
 },
-{ title: 'YDKJS', author: 'Kyle Simpson', pages: 300, read: false }
+{
+    title: 'YDKJS',
+    author: 'Kyle Simpson',
+    pages: 300,
+    read: false
+}
 ];
 
 function Book(title, author, pages, read) {
