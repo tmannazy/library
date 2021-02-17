@@ -59,28 +59,26 @@
 // ];
 let myLibrary = [];
 
-function Book() {
-    this.title = '';
-    this.author = '';
-    this.pages = '';
-    if (this.read == 'yes')
-        return true;
-    else
-        return false;
+function Book(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = this.read == 'yes' ? true : false
 }
 Book.prototype = {
     bookAdd() { myLibrary.push(this.title, this.author, this.pages, this.read) }
 };
 
-let bookObj = new Book();
-
 function addBookToLibrary() {
-    bookObj.title = bookData.title.value;
-    bookObj.author = bookData.author.value;
-    bookObj.pages = Number(bookData.pages.value);
-    bookObj.read = bookData.readbook.value;
-    bookObj.bookAdd();
-}
+    let bookObj = new Book(title, author, pages, read);
+
+    bookObj.title = document.getElementById('title').value;
+    bookObj.author = document.getElementById('author').value;
+    bookObj.pages = Number(document.getElementById('pages').value);
+    bookObj.read = document.querySelector('input[name="readbook"]:checked').value;
+    // bookObj.bookAdd();
+    return bookObj;
+};
 
 // addBookToLibrary();
 let button = document.querySelector('button');
