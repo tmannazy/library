@@ -65,23 +65,22 @@ function Book(title, author, pages, read) {
     this.pages = pages
     this.read = read == 'yes' ? true : false
 }
-// Book.prototype = {
-//     bookAdd() { myLibrary.push(this.title, this.author, this.pages, this.read) }
-// };
 
+function addBookToLibrary(e) {
+    e.preventDefault();
+    title = document.getElementById('title').value;
+    author = document.getElementById('author').value;
+    pages = Number(document.getElementById('pages').value);
+    read = document.querySelector('input[name="readbook"]:checked').value;
 
-function addBookToLibrary() {
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = Number(document.getElementById('pages').value);
-    let read = document.querySelector('input[name="readbook"]:checked').value;
     let bookObj = new Book(title, author, pages, read);
+
     myLibrary.push(bookObj);
     console.log(myLibrary);
 };
 
 let button = document.querySelector('button');
-button.addEventListener('click', addBookToLibrary());
+button.addEventListener('click', addBookToLibrary);
 
 
 //  This function loops through the array to display the books in a table format or card.
@@ -100,5 +99,3 @@ const displayLibrary = () => {
 
 // Create button on each book to change the read status.
 // A isRead() on the Book prototype instance
-
-// console.log(myLibrary);
