@@ -63,24 +63,23 @@ function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = this.read == 'yes' ? true : false
+    this.read = read == 'yes' ? true : false
 }
-Book.prototype = {
-    bookAdd() { myLibrary.push(this.title, this.author, this.pages, this.read) }
-};
+// Book.prototype = {
+//     bookAdd() { myLibrary.push(this.title, this.author, this.pages, this.read) }
+// };
+
 
 function addBookToLibrary() {
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = Number(document.getElementById('pages').value);
+    let read = document.querySelector('input[name="readbook"]:checked').value;
     let bookObj = new Book(title, author, pages, read);
-
-    bookObj.title = document.getElementById('title').value;
-    bookObj.author = document.getElementById('author').value;
-    bookObj.pages = Number(document.getElementById('pages').value);
-    bookObj.read = document.querySelector('input[name="readbook"]:checked').value;
-    // bookObj.bookAdd();
-    return bookObj;
+    myLibrary.push(bookObj);
+    console.log(myLibrary);
 };
 
-// addBookToLibrary();
 let button = document.querySelector('button');
 button.addEventListener('click', addBookToLibrary());
 
