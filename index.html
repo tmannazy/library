@@ -11,7 +11,7 @@
     <body>
         <main>
             <div class="book-info">
-                <form action="">
+                <form name="bookData">
                     <p>Kindly supply your Book information below</p>
                     <label for="title">Book Title</label>
                     <input type="text" name="title" id="title">
@@ -21,9 +21,10 @@
                     <input type="text" name="pages" id="pages">
                     <p>Have you finished reading the book?</p>
                     <label for="yes">Yes</label>
-                    <input type="radio" name="readbook" id="yes" value="yes">
+                    <input type="radio" name="readbook" id="yes" value="yes" checked="checked">
                     <label for="no">No</label>
                     <input type="radio" name="readbook" id="no" value="no">
+                    <button value="submit">Submit</button>
                 </form>
             </div>
         </main>
