@@ -84,18 +84,33 @@ button.addEventListener('click', addBookToLibrary);
 
 // This function loops through the array
 // to display the books in a table format or card.
-let table = document.querySelector('.book-table')
+
 const displayLibrary = () => {
+    let table = document.querySelector('.book-table')
+    let tableStructure = document.createElement('table');
+    let tableCaption = document.createElement('caption');
+    let tableBody = document.createElement('tbody');
+    let tableHead = document.createElement('thead');
+    let tableRow = document.createElement('tr');
+    let tableHeader = document.createElement('th');
     libraryBooks = myLibrary.forEach(element => {
         for (let prop in element) {
-            tableStructure = document.createElement('table');
-            tableHead = document.createElement('thead');
-            tableRow = document.createElement('tr');
-            tableBody = document.createElement('tbody');
-            tableData = document.createElement('td');
+            for (i = 0; i < myLibrary.length; i++) {
+                tableCaption.textContent = 'YOUR BOOK DATA';
+                tableHead.appendChild(tableRow);
+                tableRow.appendChild(tableHeader);
+                tableHeader.textContent = `${prop} `;
+                let tableData = document.createElement('td');
+                for (j = 0; j < myLibrary.length; j++) {
+                    tableData.textContent = `${element[prop][i]}`
+                    tableRow.appendChild(tableData);
+                }
+                tableBody.appendChild(tableRow);
+            }
+            tableStructure.appendChild(tableCaption);
+            tableStructure.appendChild(tableHead);
+            tableStructure.appendChild(tableBody);
             table.appendChild(tableStructure);
-
-            table.textContent = `${prop}: ${element[prop]}\n`;
         }
     });
 }
