@@ -67,6 +67,7 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(e) {
+    e.preventDefault();
     title = document.getElementById('title').value;
     author = document.getElementById('author').value;
     pages = Number(document.getElementById('pages').value);
@@ -74,24 +75,30 @@ function addBookToLibrary(e) {
 
     let bookObj = new Book(title, author, pages, read);
     myLibrary.push(bookObj);
-
-    // This function loops through the array
-    // to display the books in a table format or card.
-    let table = document.querySelector('.book-table')
-    const displayLibrary = () => {
-        libraryBooks = myLibrary.forEach(element => {
-            for (let prop in element) {
-                table.textContent = `${prop}: ${element[prop]}\n`;
-            }
-        });
-    }
     displayLibrary();
-    e.preventDefault();
 };
 
 let button = document.querySelector('button');
 button.addEventListener('click', addBookToLibrary);
 
+
+// This function loops through the array
+// to display the books in a table format or card.
+let table = document.querySelector('.book-table')
+const displayLibrary = () => {
+    libraryBooks = myLibrary.forEach(element => {
+        for (let prop in element) {
+            tableStructure = document.createElement('table');
+            tableHead = document.createElement('thead');
+            tableRow = document.createElement('tr');
+            tableBody = document.createElement('tbody');
+            tableData = document.createElement('td');
+            table.appendChild(tableStructure);
+
+            table.textContent = `${prop}: ${element[prop]}\n`;
+        }
+    });
+}
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
 
