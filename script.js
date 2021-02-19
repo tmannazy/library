@@ -85,35 +85,41 @@ button.addEventListener('click', addBookToLibrary);
 // This function loops through the array
 // to display the books in a table format or card.
 
+const table = document.querySelector('.book-table')
 const tableStructure = document.createElement('table');
 const tableCaption = document.createElement('caption');
 const tableBody = document.createElement('tbody');
 const tableHead = document.createElement('thead');
 tableCaption.textContent = 'YOUR BOOK DATA';
 tableStructure.appendChild(tableCaption);
-tableStructure.appendChild(tableHead);
-tableStructure.appendChild(tableBody);
 
 const displayLibrary = () => {
-    const table = document.querySelector('.book-table')
-    const generateTableFromObject = obj => {
-        const tableRow = document.createElement('tr');
-        const tableHeader = document.createElement('th');
-        for (let prop in obj) {
-            tableHeader.textContent = `${prop} `;
-            let tableData = document.createElement('td');
-            tableData.textContent = `${obj[prop]}`;
-            tableRow.appendChild(tableData);
+    const tableRowHeader = document.createElement('tr');
+    const tableRowBody = document.createElement('tr');
+    const generateTableHeaderFromObject = obj => {
+        for (let key in obj) {
+            const tableHeader = document.createElement('th');
+            tableHeader.textContent += `${key} `;
+            tableRowHeader.appendChild(tableHeader);
+            tableHead.appendChild(tableRowHeader);
         }
-        tableRow.appendChild(tableHeader);
-        tableHead.appendChild(tableRow);
-        tableBody.appendChild(tableRow);
+        // generateTableContent(obj);
+        // }
+        // const generateTableContent = obj => {
+        for (let prop in obj) {
+            const tableData = document.createElement('td');
+            tableData.textContent = `${obj[prop]}`;
+            tableRowBody.appendChild(tableData);
+            tableBody.appendChild(tableRowBody);
+        }
     }
-
-    table.appendChild(tableStructure);
-    const libraryBooks = myLibrary.forEach(generateTableFromObject)
+    const libraryBooks = myLibrary.forEach(generateTableHeaderFromObject)
 
 };
+
+tableStructure.appendChild(tableHead);
+tableStructure.appendChild(tableBody);
+table.appendChild(tableStructure);
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
 
