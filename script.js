@@ -66,7 +66,7 @@ function Book(title, author, pages, read) {
     this.read = read == 'yes' ? true : false
 }
 
-function addBookToLibrary(e) {
+const addBookToLibrary = e => {
     e.preventDefault();
     title = document.getElementById('title').value;
     author = document.getElementById('author').value;
@@ -78,13 +78,12 @@ function addBookToLibrary(e) {
     displayLibrary();
 };
 
-let button = document.querySelector('button');
+let button = document.querySelector('#submit');
 button.addEventListener('click', addBookToLibrary);
 
 
 // This function loops through the array
 // to display the books in a table format or card.
-
 const table = document.querySelector('.book-table')
 const tableBody = document.querySelector('tbody');
 
@@ -100,11 +99,30 @@ const displayLibrary = () => {
         myLibrary = [];
     }
     const libraryBooks = myLibrary.forEach(generateTableHeaderFromObject)
-
 };
 
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
+let formStatus = document.querySelector('.book-info');
+let openButton = document.querySelector('.toggle-form');
+
+const showForm = () => {
+    document.querySelector('.book-info').style.display = 'block';
+};
+
+const toggleForm = () => {
+    if (formStatus.style.display === 'none') {
+        formStatus.style.display = 'block';
+        openButton.textContent = 'Close Form';
+    }
+    else {
+        formStatus.style.display = 'none';
+        openButton.textContent = 'Click Here to Enter Book Details';
+    }
+};
+setTimeout(toggleForm, 0);
+openButton.addEventListener('click', toggleForm);
+
 
 
 // Create remove button on each book display in the library.
