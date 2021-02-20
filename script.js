@@ -1,61 +1,61 @@
 // let myLibrary = [
-// {
-//     title: 'Think & Grow Rich',
-//     author: 'Napoleon Hill',
-//     pages: 260,
-//     read: true
-// },
-// {
-//     title: 'Purpose Driven Life',
-//     author: 'Rick Warrens',
-//     pages: 500,
-//     read: true
-// }, {
-//     title: 'The Alchemist',
-//     author: 'Paulo Coelho', pages: 208,
-//     read: true
-// }, {
-//     title: 'Richest Man in Babylon',
-//     author: 'George Samuel Clason',
-//     pages: 144,
-//     read: true
-// },
-// {
-//     title: 'Progit',
-//     author: 'Ben Straub & Scott Chacon',
-//     pages: 513,
-//     read: false
-// },
-// {
-//     title: 'Grit The Power of Passion and Perseverance',
-//     author: 'Angela Duckworth',
-//     pages: 513,
-//     read: false
-// },
-// {
-//     title: '56 Win Streak',
-//     author: 'Joe DiMaggio',
-//     pages: 30,
-//     read: true
-// },
-// {
-//     title: 'Code Daily',
-//     author: 'Madison Kanna',
-//     pages: 25,
-//     read: true
-// },
-// {
-//     title: 'Eloquent JavaScript',
-//     author: 'Marijn Haverbeke',
-//     pages: 388,
-//     read: false
-// },
-// {
-//     title: 'YDKJS',
-//     author: 'Kyle Simpson',
-//     pages: 300,
-//     read: false
-// }
+//     {
+//         title: 'Think & Grow Rich',
+//         author: 'Napoleon Hill',
+//         pages: 260,
+//         read: true
+//     },
+//     {
+//         title: 'Purpose Driven Life',
+//         author: 'Rick Warrens',
+//         pages: 500,
+//         read: true
+//     }, {
+//         title: 'The Alchemist',
+//         author: 'Paulo Coelho', pages: 208,
+//         read: true
+//     }, {
+//         title: 'Richest Man in Babylon',
+//         author: 'George Samuel Clason',
+//         pages: 144,
+//         read: true
+//     },
+//     {
+//         title: 'Progit',
+//         author: 'Ben Straub & Scott Chacon',
+//         pages: 513,
+//         read: false
+//     },
+//     {
+//         title: 'Grit The Power of Passion and Perseverance',
+//         author: 'Angela Duckworth',
+//         pages: 513,
+//         read: false
+//     },
+//     {
+//         title: '56 Win Streak',
+//         author: 'Joe DiMaggio',
+//         pages: 30,
+//         read: true
+//     },
+//     {
+//         title: 'Code Daily',
+//         author: 'Madison Kanna',
+//         pages: 25,
+//         read: true
+//     },
+//     {
+//         title: 'Eloquent JavaScript',
+//         author: 'Marijn Haverbeke',
+//         pages: 388,
+//         read: false
+//     },
+//     {
+//         title: 'YDKJS',
+//         author: 'Kyle Simpson',
+//         pages: 300,
+//         read: false
+//     }
 // ];
 let myLibrary = [];
 
@@ -86,40 +86,23 @@ button.addEventListener('click', addBookToLibrary);
 // to display the books in a table format or card.
 
 const table = document.querySelector('.book-table')
-const tableStructure = document.createElement('table');
-const tableCaption = document.createElement('caption');
-const tableBody = document.createElement('tbody');
-const tableHead = document.createElement('thead');
-tableCaption.textContent = 'YOUR BOOK DATA';
-tableStructure.appendChild(tableCaption);
+const tableBody = document.querySelector('tbody');
 
 const displayLibrary = () => {
-    const tableRowHeader = document.createElement('tr');
-    const tableRowBody = document.createElement('tr');
     const generateTableHeaderFromObject = obj => {
-        for (let key in obj) {
-            const tableHeader = document.createElement('th');
-            tableHeader.textContent += `${key} `;
-            tableRowHeader.appendChild(tableHeader);
-            tableHead.appendChild(tableRowHeader);
-        }
-        // generateTableContent(obj);
-        // }
-        // const generateTableContent = obj => {
+        const tableRowBody = document.createElement('tr');
         for (let prop in obj) {
-            const tableData = document.createElement('td');
+            let tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
-            tableBody.appendChild(tableRowBody);
         }
+        tableBody.appendChild(tableRowBody);
+        myLibrary = [];
     }
     const libraryBooks = myLibrary.forEach(generateTableHeaderFromObject)
 
 };
 
-tableStructure.appendChild(tableHead);
-tableStructure.appendChild(tableBody);
-table.appendChild(tableStructure);
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
 
