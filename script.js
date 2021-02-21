@@ -59,11 +59,12 @@
 // ];
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, comment) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read == 'yes' ? true : false
+    this.comment = comment
 }
 
 const addBookToLibrary = e => {
@@ -72,8 +73,9 @@ const addBookToLibrary = e => {
     author = document.getElementById('author').value;
     pages = Number(document.getElementById('pages').value);
     read = document.querySelector('input[name="readbook"]:checked').value;
+    comment = document.querySelector('textarea').value;
 
-    let bookObj = new Book(title, author, pages, read);
+    let bookObj = new Book(title, author, pages, read, comment);
     myLibrary.push(bookObj);
     displayLibrary();
 };
@@ -113,11 +115,11 @@ const showForm = () => {
 const toggleForm = () => {
     if (formStatus.style.display === 'none') {
         formStatus.style.display = 'block';
-        openButton.textContent = 'Close Form';
+        openButton.textContent = 'Click to Close Form';
     }
     else {
         formStatus.style.display = 'none';
-        openButton.textContent = 'Click Here to Enter Book Details';
+        openButton.textContent = 'Enter Book Details';
     }
 };
 setTimeout(toggleForm, 0);
