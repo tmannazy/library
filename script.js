@@ -93,12 +93,14 @@ const displayLibrary = () => {
     const generateTableHeaderFromObject = obj => {
         const tableRowBody = document.createElement('tr');
         for (let prop in obj) {
-            let tableData = document.createElement('td');
+            const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
         }
         tableBody.appendChild(tableRowBody);
-        myLibrary = [];
+    }
+    while (tableBody.firstChild) {
+        tableBody.firstChild.remove();
     }
     const libraryBooks = myLibrary.forEach(generateTableHeaderFromObject)
 };
