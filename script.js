@@ -63,7 +63,8 @@ function Book(title, author, pages, read, comment) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read == 'yes' ? true : false
+    this.read = status()
+    // this.read = read == 'yes' ? true : false
     this.comment = comment
 }
 
@@ -124,13 +125,22 @@ const toggleForm = () => {
         openButton.textContent = 'Enter Book Details';
     }
 };
+
+// Removes delay on button click to display form
 setTimeout(toggleForm, 0);
 openButton.addEventListener('click', toggleForm);
 
-
-
 // Create remove button on each book display in the library.
+Book.prototype.deleteBook = function (bookObj) {
+    let delBtn = document.createElement('button');
+    delBtn.id = 'deleteBtn';
+    delBtn.class = 'delete-btn';
 
+}
 
 // Create button on each book to change the read status.
 // A isRead() on the Book prototype instance
+Book.prototype.status = function () {
+
+}
+console.log(myLibrary);
