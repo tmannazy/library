@@ -63,8 +63,8 @@ function Book(title, author, pages, read, comment) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = status()
-    // this.read = read == 'yes' ? true : false
+    // this.read = status()
+    this.read = read == 'yes' ? true : false
     this.comment = comment
 }
 
@@ -91,19 +91,23 @@ const table = document.querySelector('.book-table')
 const tableBody = document.querySelector('tbody');
 
 const displayLibrary = () => {
-    const generateTableHeaderFromObject = obj => {
+    const generateTableFromObject = obj => {
         const tableRowBody = document.createElement('tr');
         for (let prop in obj) {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
         }
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'X';
+        tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
     while (tableBody.firstChild) {
         tableBody.firstChild.remove();
     }
-    const libraryBooks = myLibrary.forEach(generateTableHeaderFromObject)
+    const libraryBooks = myLibrary.forEach(generateTableFromObject)
 };
 
 // Button to click and add NEW BOOK in a FORM format
@@ -131,16 +135,16 @@ setTimeout(toggleForm, 0);
 openButton.addEventListener('click', toggleForm);
 
 // Create remove button on each book display in the library.
-Book.prototype.deleteBook = function (bookObj) {
-    let delBtn = document.createElement('button');
-    delBtn.id = 'deleteBtn';
-    delBtn.class = 'delete-btn';
-
-}
+// Book.prototype.deleteBook = function (obj) {
+//     let delBtn = document.createElement('button');
+//     delBtn.id = 'deleteBtn';
+//     delBtn.class = 'delete-btn';
+    // delBtn.addEventListener ? delBtn.addEventListener('click',)
+// }
 
 // Create button on each book to change the read status.
 // A isRead() on the Book prototype instance
-Book.prototype.status = function () {
+// Book.prototype.status = function () {
 
-}
-console.log(myLibrary);
+// }
+// console.log(myLibrary);
