@@ -93,14 +93,14 @@ const tableBody = document.querySelector('tbody');
 const displayLibrary = () => {
     const generateTableFromObject = obj => {
         const tableRowBody = document.createElement('tr');
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'X';
+        delBtn.className = 'delete-book';
         for (let prop in obj) {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
         }
-
-        const delBtn = document.createElement('button');
-        delBtn.textContent = 'X';
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
@@ -135,6 +135,13 @@ setTimeout(toggleForm, 0);
 openButton.addEventListener('click', toggleForm);
 
 // Create remove button on each book display in the library.
+const delBook = document.querySelector('.delete-book')
+const removeBook = () => {
+    myLibrary.forEach((item, index) => {
+        item
+    })
+}
+delBook.addEventListener('click', removeBook);
 // Book.prototype.deleteBook = function (obj) {
 //     let delBtn = document.createElement('button');
 //     delBtn.id = 'deleteBtn';
