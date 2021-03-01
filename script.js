@@ -136,12 +136,12 @@ openButton.addEventListener('click', toggleForm);
 
 // Create remove button on each book display in the library.
 const delBook = document.querySelector('.delete-book')
+delBook.addEventListener('click', removeBook);
 const removeBook = () => {
-    myLibrary.forEach((item, index) => {
-        item
+    myLibrary.forEach(item => {
+        item.pop();
     })
 }
-delBook.addEventListener('click', removeBook);
 // Book.prototype.deleteBook = function (obj) {
 //     let delBtn = document.createElement('button');
 //     delBtn.id = 'deleteBtn';
