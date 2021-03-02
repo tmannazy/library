@@ -108,6 +108,16 @@ const displayLibrary = () => {
         tableBody.firstChild.remove();
     }
     const libraryBooks = myLibrary.forEach(generateTableFromObject)
+
+    // Create remove button on each book display in the library.
+    const delBook = document.querySelector('.delete-book')
+    delBook.addEventListener('click', removeBook);
+    let removeBook = () => {
+        // obj.forEach(item => item);
+        myLibrary.forEach(item => {
+            item.pop();
+        })
+    }
 };
 
 // Button to click and add NEW BOOK in a FORM format
@@ -134,14 +144,7 @@ const toggleForm = () => {
 setTimeout(toggleForm, 0);
 openButton.addEventListener('click', toggleForm);
 
-// Create remove button on each book display in the library.
-const delBook = document.querySelector('.delete-book')
-delBook.addEventListener('click', removeBook);
-const removeBook = () => {
-    myLibrary.forEach(item => {
-        item.pop();
-    })
-}
+
 // Book.prototype.deleteBook = function (obj) {
 //     let delBtn = document.createElement('button');
 //     delBtn.id = 'deleteBtn';
