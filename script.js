@@ -59,7 +59,8 @@
 // ];
 let myLibrary = [];
 
-function Book(title, author, pages, read, comment) {
+function Book(id, title, author, pages, read, comment) {
+    this.id = new Date()
     this.title = title
     this.author = author
     this.pages = pages
@@ -70,13 +71,14 @@ function Book(title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
+    id = new Date();
     title = document.getElementById('title').value;
     author = document.getElementById('author').value;
     pages = Number(document.getElementById('pages').value);
     read = document.querySelector('input[name="readbook"]:checked').value;
     comment = document.querySelector('textarea').value;
 
-    let bookObj = new Book(title, author, pages, read, comment);
+    let bookObj = new Book(id, title, author, pages, read, comment);
     myLibrary.push(bookObj);
     displayLibrary();
 };
@@ -99,6 +101,8 @@ const displayLibrary = () => {
         for (let prop in obj) {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
+            tableData.setAttribute('data-book-id', '')
+            tableData.dataset.bookId = `${obj[id]}`;
             tableRowBody.appendChild(tableData);
         }
         tableRowBody.appendChild(delBtn);
@@ -111,13 +115,12 @@ const displayLibrary = () => {
 
     // Create remove button on each book display in the library.
     const delBook = document.querySelector('.delete-book')
-    delBook.addEventListener('click', removeBook);
-    let removeBook = () => {
-        // obj.forEach(item => item);
+    const removeBook = () => {
         myLibrary.forEach(item => {
             item.pop();
         })
     }
+    delBook.addEventListener('click', removeBook);
 };
 
 // Button to click and add NEW BOOK in a FORM format
