@@ -102,7 +102,7 @@ const displayLibrary = () => {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableData.setAttribute('data-book-id', '')
-            tableData.dataset.bookId = `${obj[id]}`;
+            tableData.dataset.bookId = obj[prop];
             tableRowBody.appendChild(tableData);
         }
         tableRowBody.appendChild(delBtn);
