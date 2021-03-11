@@ -59,8 +59,9 @@
 // ];
 let myLibrary = [];
 
+let count = 0;
 function Book(id, title, author, pages, read, comment) {
-    this.id = new Date()
+    this.id = count
     this.title = title
     this.author = author
     this.pages = pages
@@ -71,7 +72,7 @@ function Book(id, title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    id = new Date();
+    id = count++
     title = document.getElementById('title').value;
     author = document.getElementById('author').value;
     pages = Number(document.getElementById('pages').value);
@@ -102,16 +103,16 @@ const displayLibrary = () => {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableData.setAttribute('data-book-id', '')
-            tableData.dataset.bookId = obj[prop];
             tableRowBody.appendChild(tableData);
         }
+        // tableData.dataset.bookId = myLibrary[obj];
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
     while (tableBody.firstChild) {
         tableBody.firstChild.remove();
     }
-    const libraryBooks = myLibrary.forEach(generateTableFromObject)
+    const libraryBooks = myLibrary.forEach(generateTableFromObject);
 
     // Create remove button on each book display in the library.
     const delBook = document.querySelector('.delete-book')
