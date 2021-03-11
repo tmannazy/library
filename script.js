@@ -94,7 +94,7 @@ const table = document.querySelector('.book-table')
 const tableBody = document.querySelector('tbody');
 
 const displayLibrary = () => {
-    const generateTableFromObject = obj => {
+    const generateTableFromObject = (obj, index, arr) => {
         const tableRowBody = document.createElement('tr');
         const delBtn = document.createElement('button');
         delBtn.textContent = 'X';
@@ -102,10 +102,10 @@ const displayLibrary = () => {
         for (let prop in obj) {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
-            tableData.setAttribute('data-book-id', '')
             tableRowBody.appendChild(tableData);
         }
-        // tableData.dataset.bookId = myLibrary[obj];
+        tableRowBody.setAttribute('data-book-id', '')
+        tableRowBody.dataset.bookId = `${index}`;
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
