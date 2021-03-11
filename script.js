@@ -104,8 +104,7 @@ const displayLibrary = () => {
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
         }
-        tableRowBody.setAttribute('data-book-id', '')
-        tableRowBody.dataset.bookId = `${index}`;
+        tableRowBody.setAttribute('data-book-id', `${index}`);
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
@@ -113,16 +112,28 @@ const displayLibrary = () => {
         tableBody.firstChild.remove();
     }
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
+    bookToDelete();
+};
 
-    // Create remove button on each book display in the library.
-    const delBook = document.querySelector('.delete-book')
+// Create remove button on each book display in the library.
+const bookToDelete = () => {
+    const delBook = document.querySelector('.delete-book');
+
     const removeBook = () => {
-        myLibrary.forEach(item => {
-            item.pop();
+        let tagName = document.getElementsByTagName('TR');
+        let valueOfAttr = tagName.getAttribute('data-book-id');
+        myLibrary.forEach((item, index) => {
+            if (valueOfAttr === index) {
+                myLibrary.slice(index, 0);
+                tableBody.deleteRow(valueOfAttr);
+            }
         })
     }
     delBook.addEventListener('click', removeBook);
 };
+
+// };
+
 
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
