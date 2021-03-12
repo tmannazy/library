@@ -68,7 +68,7 @@ function Book(id, title, author, pages, read, comment) {
     // this.read = status()
     this.read = read == 'yes' ? true : false
     this.comment = comment
-}
+};
 
 const addBookToLibrary = e => {
     e.preventDefault();
@@ -117,15 +117,15 @@ const displayLibrary = () => {
 
 // Create remove button on each book display in the library.
 const bookToDelete = () => {
-    const delBook = document.querySelector('.delete-book');
+    const delBook = document.querySelectorAll('.delete-book');
 
-    const removeBook = () => {
-        let tagName = document.getElementsByTagName('TR');
-        let valueOfAttr = tagName.getAttribute('data-book-id');
+    const removeBook = (event) => {
+        const rowToRemove = event.target.closest('tr');
+        const id = rowToRemove.dataset.bookId;
         myLibrary.forEach((item, index) => {
-            if (valueOfAttr === index) {
+            if (id === index) {
                 myLibrary.slice(index, 0);
-                tableBody.deleteRow(valueOfAttr);
+                tableBody.deleteRow(id);
             }
         })
     }
