@@ -118,22 +118,20 @@ const displayLibrary = () => {
 // Create remove button on each book display in the library.
 const bookToDelete = () => {
     const delBook = document.querySelectorAll('.delete-book');
+    const btnsArr = Array.from(delBook);
 
     const removeBook = (event) => {
         const rowToRemove = event.target.closest('tr');
-        const id = rowToRemove.dataset.bookId;
+        const id = Number(rowToRemove.dataset.bookId);
         myLibrary.forEach((item, index) => {
             if (id === index) {
-                myLibrary.slice(index, 0);
+                myLibrary.splice(index, 1);
                 tableBody.deleteRow(id);
             }
-        })
-    }
-    delBook.addEventListener('click', removeBook);
+        });
+    };
+    btnsArr.map(item => item.addEventListener('click', removeBook));
 };
-
-// };
-
 
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
