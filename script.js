@@ -59,9 +59,9 @@
 // ];
 let myLibrary = [];
 
-let count = 0;
+let count = 1;
 function Book(id, title, author, pages, read, comment) {
-    this.id = count
+    this.id = id
     this.title = title
     this.author = author
     this.pages = pages
@@ -104,7 +104,7 @@ const displayLibrary = () => {
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
         }
-        tableRowBody.setAttribute('data-book-id', `${index}`);
+        tableRowBody.setAttribute('data-book-id', `${index + 1}`);
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
@@ -124,9 +124,9 @@ const bookToDelete = () => {
         const rowToRemove = event.target.closest('tr');
         const id = Number(rowToRemove.dataset.bookId);
         myLibrary.forEach((item, index) => {
-            if (id === index) {
+            if (id === item.id) {
                 myLibrary.splice(index, 1);
-                tableBody.deleteRow(id);
+                tableBody.deleteRow(index);
             }
         });
     };
