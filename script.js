@@ -94,7 +94,7 @@ const table = document.querySelector('.book-table')
 const tableBody = document.querySelector('tbody');
 
 const displayLibrary = () => {
-    const generateTableFromObject = (obj, index, arr) => {
+    const generateTableFromObject = (obj, index) => {
         const tableRowBody = document.createElement('tr');
         const delBtn = document.createElement('button');
         delBtn.textContent = 'X';
@@ -128,6 +128,7 @@ const bookToDelete = () => {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
+            count = 1;
         });
     };
     btnsArr.map(item => item.addEventListener('click', removeBook));
