@@ -72,7 +72,7 @@ function Book(id, title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    id = count++
+    id = new Date();
     title = document.getElementById('title').value;
     author = document.getElementById('author').value;
     pages = Number(document.getElementById('pages').value);
@@ -100,6 +100,9 @@ const displayLibrary = () => {
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         for (let prop in obj) {
+            if (prop == 'id') {
+                obj[prop] = index + 1;
+            }
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
@@ -128,7 +131,6 @@ const bookToDelete = () => {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
-            count = 1;
         });
     };
     btnsArr.map(item => item.addEventListener('click', removeBook));
