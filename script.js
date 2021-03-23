@@ -59,8 +59,7 @@
 // ];
 let myLibrary = [];
 
-let count = 1;
-function Book(id, title, author, pages, read, comment) {
+function Book(title, author, pages, read, comment) {
     this.id = id
     this.title = title
     this.author = author
@@ -72,14 +71,14 @@ function Book(id, title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    id = new Date();
+    id = new Date().getMilliseconds();
     title = document.getElementById('title').value;
     author = document.getElementById('author').value;
     pages = Number(document.getElementById('pages').value);
     read = document.querySelector('input[name="readbook"]:checked').value;
     comment = document.querySelector('textarea').value;
 
-    let bookObj = new Book(id, title, author, pages, read, comment);
+    let bookObj = new Book(title, author, pages, read, comment);
     myLibrary.push(bookObj);
     displayLibrary();
 };
@@ -97,17 +96,17 @@ const displayLibrary = () => {
     const generateTableFromObject = (obj, index) => {
         const tableRowBody = document.createElement('tr');
         const delBtn = document.createElement('button');
+        tableRowBody.setAttribute('data-book-id', `${Object.values(obj)[0]}`);
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         for (let prop in obj) {
-            if (prop == 'id') {
-                obj[prop] = index + 1;
-            }
+            // if (prop == 'id') {
+            // }
             const tableData = document.createElement('td');
+            tableData.cellIndex[0] = index + 1;
             tableData.textContent = `${obj[prop]}`;
             tableRowBody.appendChild(tableData);
         }
-        tableRowBody.setAttribute('data-book-id', `${index + 1}`);
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
@@ -123,11 +122,11 @@ const bookToDelete = () => {
     const delBook = document.querySelectorAll('.delete-book');
     const btnsArr = Array.from(delBook);
 
-    const removeBook = (event) => {
+    const removeBook = event => {
         const rowToRemove = event.target.closest('tr');
-        const id = Number(rowToRemove.dataset.bookId);
+        const tableBookId = rowToRemove.dataset.bookId;
         myLibrary.forEach((item, index) => {
-            if (id === item.id) {
+            if (tableBookId === item.id.getMilliseconds()) {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
