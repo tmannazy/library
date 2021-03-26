@@ -58,6 +58,7 @@
 //     }
 // ];
 let myLibrary = [];
+let count = 0;
 
 function Book(title, author, pages, read, comment) {
     this.id = id
@@ -100,11 +101,13 @@ const displayLibrary = () => {
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         for (let prop in obj) {
-            // if (prop == 'id') {
-            // }
             const tableData = document.createElement('td');
-            tableData.cellIndex[0] = index + 1;
-            tableData.textContent = `${obj[prop]}`;
+            if (prop === 'id') {
+                tableData.textContent = index;
+                count++;
+            } else {
+                tableData.textContent = `${obj[prop]}`;
+            }
             tableRowBody.appendChild(tableData);
         }
         tableRowBody.appendChild(delBtn);
@@ -124,9 +127,9 @@ const bookToDelete = () => {
 
     const removeBook = event => {
         const rowToRemove = event.target.closest('tr');
-        const tableBookId = rowToRemove.dataset.bookId;
+        const tableBookId = Number(rowToRemove.dataset.bookId);
         myLibrary.forEach((item, index) => {
-            if (tableBookId === item.id.getMilliseconds()) {
+            if (tableBookId === item.id) {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
@@ -147,7 +150,7 @@ const showForm = () => {
 const toggleForm = () => {
     if (formStatus.style.display === 'none') {
         formStatus.style.display = 'block';
-        openButton.textContent = 'Click to Close Form';
+        openButton.textContent = 'Click To Close Form';
     }
     else {
         formStatus.style.display = 'none';
