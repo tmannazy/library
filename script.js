@@ -58,7 +58,6 @@
 //     }
 // ];
 let myLibrary = [];
-let count = 0;
 
 function Book(title, author, pages, read, comment) {
     this.id = id
@@ -97,25 +96,36 @@ const displayLibrary = () => {
     const generateTableFromObject = (obj, index) => {
         const tableRowBody = document.createElement('tr');
         const delBtn = document.createElement('button');
-        tableRowBody.setAttribute('data-book-id', `${Object.values(obj)[0]}`);
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        const span = document.createElement('span');
+
+
+        tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`;
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
+        // label.className = 'switch';
+        // input.setAttribute('type', 'checkbox');
+        // span.className = 'slider';
         for (let prop in obj) {
             const tableData = document.createElement('td');
             if (prop === 'id') {
                 tableData.textContent = index;
-                count++;
             } else {
                 tableData.textContent = `${obj[prop]}`;
             }
             tableRowBody.appendChild(tableData);
         }
+        // label.appendChild(input);
+        // label.appendChild(span);
+        // tableRowBody.appendChild(label);
         tableRowBody.appendChild(delBtn);
         tableBody.appendChild(tableRowBody);
     }
     while (tableBody.firstChild) {
         tableBody.firstChild.remove();
     }
+    bookReadStatus();
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
     bookToDelete();
 };
@@ -163,16 +173,19 @@ setTimeout(toggleForm, 0);
 openButton.addEventListener('click', toggleForm);
 
 
-// Book.prototype.deleteBook = function (obj) {
-//     let delBtn = document.createElement('button');
-//     delBtn.id = 'deleteBtn';
-//     delBtn.class = 'delete-btn';
-    // delBtn.addEventListener ? delBtn.addEventListener('click',)
-// }
-
 // Create button on each book to change the read status.
 // A isRead() on the Book prototype instance
-// Book.prototype.status = function () {
 
-// }
+Book.prototype.bookReadStatus = function () {
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    const span = document.createElement('span');
+
+    label.className = 'switch';
+    input.setAttribute('type', 'checkbox');
+    span.className = 'slider';
+
+    label.appendChild(input);
+    label.appendChild(span);
+}
 // console.log(myLibrary);
