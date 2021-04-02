@@ -60,7 +60,7 @@
 let myLibrary = [];
 
 function Book(title, author, pages, read, comment) {
-    this.id = id
+    this.num = num
     this.title = title
     this.author = author
     this.pages = pages
@@ -71,14 +71,15 @@ function Book(title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    id = new Date().getMilliseconds();
-    title = document.getElementById('title').value;
-    author = document.getElementById('author').value;
-    pages = Number(document.getElementById('pages').value);
-    read = document.querySelector('input[name="readbook"]:checked').value;
-    comment = document.querySelector('textarea').value;
+    const id = new Date().getMilliseconds();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = Number(document.getElementById('pages').value);
+    const read = document.querySelector('input[name="readbook"]:checked').value;
+    const comment = document.querySelector('textarea').value;
 
     let bookObj = new Book(title, author, pages, read, comment);
+    // bookObj.bookReadStatus();
     myLibrary.push(bookObj);
     displayLibrary();
 };
@@ -96,17 +97,18 @@ const displayLibrary = () => {
     const generateTableFromObject = (obj, index) => {
         const tableRowBody = document.createElement('tr');
         const delBtn = document.createElement('button');
-        const label = document.createElement('label');
-        const input = document.createElement('input');
-        const span = document.createElement('span');
+        const toggleButtonLabel = document.createElement('label');
+        const toggleButtonInput = document.createElement('input');
+        const toggleButtonSpan = document.createElement('span');
 
 
         tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`;
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
-        // label.className = 'switch';
-        // input.setAttribute('type', 'checkbox');
-        // span.className = 'slider';
+        toggleButtonLabel.className = 'switch';
+        toggleButtonInput.setAttribute('type', 'checkbox');
+        toggleButtonSpan.className = 'slider';
+
         for (let prop in obj) {
             const tableData = document.createElement('td');
             if (prop === 'id') {
@@ -115,17 +117,17 @@ const displayLibrary = () => {
                 tableData.textContent = `${obj[prop]}`;
             }
             tableRowBody.appendChild(tableData);
+
         }
-        // label.appendChild(input);
-        // label.appendChild(span);
-        // tableRowBody.appendChild(label);
+        toggleButtonLabel.appendChild(input);
+        toggleButtonLabel.appendChild(span);
         tableRowBody.appendChild(delBtn);
+        tableRowBody.appendChild(label);
         tableBody.appendChild(tableRowBody);
     }
     while (tableBody.firstChild) {
         tableBody.firstChild.remove();
     }
-    bookReadStatus();
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
     bookToDelete();
 };
@@ -176,16 +178,11 @@ openButton.addEventListener('click', toggleForm);
 // Create button on each book to change the read status.
 // A isRead() on the Book prototype instance
 
-Book.prototype.bookReadStatus = function () {
-    const label = document.createElement('label');
-    const input = document.createElement('input');
-    const span = document.createElement('span');
+// Book.prototype.bookReadStatus = function () {
+//     const checkStatus = document.querySelector("label");
+//     if (checkStatus === 'yes') {
+//         label.className = 'switch';
 
-    label.className = 'switch';
-    input.setAttribute('type', 'checkbox');
-    span.className = 'slider';
-
-    label.appendChild(input);
-    label.appendChild(span);
-}
+//     }
+// }
 // console.log(myLibrary);
