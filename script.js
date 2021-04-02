@@ -60,7 +60,7 @@
 let myLibrary = [];
 
 function Book(title, author, pages, read, comment) {
-    this.num = num
+    this.timeCreated = timeCreated
     this.title = title
     this.author = author
     this.pages = pages
@@ -71,7 +71,7 @@ function Book(title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    const id = new Date().getMilliseconds();
+    const timeCreated = new Date().getMilliseconds();
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = Number(document.getElementById('pages').value);
@@ -79,7 +79,6 @@ const addBookToLibrary = e => {
     const comment = document.querySelector('textarea').value;
 
     let bookObj = new Book(title, author, pages, read, comment);
-    // bookObj.bookReadStatus();
     myLibrary.push(bookObj);
     displayLibrary();
 };
@@ -100,7 +99,6 @@ const displayLibrary = () => {
         const toggleButtonLabel = document.createElement('label');
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
-
 
         tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`;
         delBtn.textContent = 'X';
@@ -127,6 +125,11 @@ const displayLibrary = () => {
     }
     while (tableBody.firstChild) {
         tableBody.firstChild.remove();
+    }
+
+    const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
+    if (toggledBtn) {
+
     }
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
     bookToDelete();
