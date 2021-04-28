@@ -127,10 +127,6 @@ const displayLibrary = () => {
         tableBody.firstChild.remove();
     }
 
-    const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
-    if (toggledBtn) {
-
-    }
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
     bookToDelete();
 };
@@ -179,6 +175,21 @@ openButton.addEventListener('click', toggleForm);
 
 
 // Create button on each book to change the read status.
+// const toggledBtn = document.querySelectorAll('input[type="checkbox"]'.checked);
+const toggledBtn = document.querySelectorAll('.slider');
+const toggledBtnArr = Array.from(toggledBtn);
+if (toggledBtn) {
+    myLibrary.forEach(item => {
+        if (item.read.textContent == 'false') {
+            item.read.textContent = 'true';
+        } else if (item.read.textContent == 'true') {
+            item.read.textContent = 'false';
+        }
+    });
+}
+
+
+
 // A isRead() on the Book prototype instance
 
 // Book.prototype.bookReadStatus = function () {
