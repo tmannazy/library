@@ -60,13 +60,13 @@
 let myLibrary = [];
 
 function Book(num, title, author, pages, read, comment) {
-    this.num = num
-    this.title = title
-    this.author = author
-    this.pages = pages
+    this.num = num;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
     // this.read = status()
-    this.read = read == 'yes' ? true : false
-    this.comment = comment
+    this.read = read == 'yes' ? true : false;
+    this.comment = comment;
 };
 
 const addBookToLibrary = e => {
@@ -80,6 +80,7 @@ const addBookToLibrary = e => {
 
     let bookObj = new Book(num, title, author, pages, read, comment);
     myLibrary.push(bookObj);
+    saveArrData();
     displayLibrary();
 };
 
@@ -105,6 +106,7 @@ const displayLibrary = () => {
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
         toggleButtonInput.setAttribute('type', 'checkbox');
+        toggleButtonInput.setAttribute('name', 'toggle');
         toggleButtonSpan.className = 'slider';
 
         for (let prop in obj) {
@@ -114,6 +116,12 @@ const displayLibrary = () => {
             } else {
                 tableData.textContent = `${obj[prop]}`;
             }
+            // let tableData;
+            // let keys = Object.keys(obj);
+            // for (let key of keys) {
+            //     tableData = document.createElement('td');
+            //     tableData.textContent = `${Object.values(keys)}`;
+            // }
             tableRowBody.appendChild(tableData);
 
         }
@@ -175,28 +183,33 @@ openButton.addEventListener('click', toggleForm);
 
 
 // Create button on each book to change the read status.
-// const toggledBtn = document.querySelectorAll('input[type="checkbox"]'.checked);
-const toggledBtn = document.querySelectorAll('.slider');
+// const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
+const toggledBtn = document.querySelectorAll('input[name="toggle"]:checked');
+// const toggledBtn = document.querySelectorAll('.slider');
 const toggledBtnArr = Array.from(toggledBtn);
-if (toggledBtn) {
-    myLibrary.forEach(item => {
-        if (item.read.textContent == 'false') {
-            item.read.textContent = 'true';
-        } else if (item.read.textContent == 'true') {
-            item.read.textContent = 'false';
+
+const changeStatus = evt => {
+    const rowToChange = evt.target.closest('tr');
+    const rowBookNum = Number(rowToChange.dataset.bookNum);
+    myLibrary.forEach((item, index) => {
+        if (rowBookNum === item.num) {
+            if (item.read.textContent == 'false') {
+                item.read.textContent = 'true';
+            } else if (item.read.textContent == 'true') {
+                item.read.textContent = 'false';
+            }
         }
     });
+};
+
+toggledBtnArr.map(item => item.addEventListener('change', changeStatus));
+
+
+
+// Save user input to localStorage
+const saveArrData = () => {
+    localStorage.setItem('myLibraryData', JSON.stringify(myLibrary));
+    let retrieveSavedArr = localStorage.getItem('myLibraryData');
 }
 
-
-
-// A isRead() on the Book prototype instance
-
-// Book.prototype.bookReadStatus = function () {
-//     const checkStatus = document.querySelector("label");
-//     if (checkStatus === 'yes') {
-//         label.className = 'switch';
-
-//     }
-// }
 // console.log(myLibrary);
