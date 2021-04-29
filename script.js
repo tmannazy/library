@@ -205,11 +205,23 @@ const changeStatus = evt => {
 toggledBtnArr.map(item => item.addEventListener('change', changeStatus));
 
 
-
 // Save user input to localStorage
 const saveArrData = () => {
     localStorage.setItem('myLibraryData', JSON.stringify(myLibrary));
     let retrieveSavedArr = localStorage.getItem('myLibraryData');
+    isArrData(retrieveSavedArr);
 }
 
+// Confirm if array exists in localStorage
+const isArrData = arr => {
+    let keys = Object.keys(localStorage);
+    for (let key of keys) {
+        if (localStorage.getItem(key) === arr) {
+            continue
+        }
+        else {
+            localStorage.setItem(key, JSON.stringify(myLibrary));
+        }
+    }
+}
 // console.log(myLibrary);
