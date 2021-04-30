@@ -183,9 +183,10 @@ openButton.addEventListener('click', toggleForm);
 
 
 // Create button on each book to change the read status.
+
 // const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
-const toggledBtn = document.querySelectorAll('input[name="toggle"]:checked');
-// const toggledBtn = document.querySelectorAll('.slider');
+// const toggledBtn = document.querySelectorAll('.slider::before');
+const toggledBtn = document.querySelectorAll('input[name=toggle]');
 const toggledBtnArr = Array.from(toggledBtn);
 
 const changeStatus = evt => {
@@ -193,16 +194,59 @@ const changeStatus = evt => {
     const rowBookNum = Number(rowToChange.dataset.bookNum);
     myLibrary.forEach((item, index) => {
         if (rowBookNum === item.num) {
-            if (item.read.textContent == 'false') {
-                item.read.textContent = 'true';
-            } else if (item.read.textContent == 'true') {
-                item.read.textContent = 'false';
+            if (item['read'] == false) {
+                item['read'] = true;
+            } else if (item['read'] == true) {
+                item['read'] = false;
             }
         }
     });
 };
 
 toggledBtnArr.map(item => item.addEventListener('change', changeStatus));
+
+
+// let checkbox = document.querySelector('input[name=toggle]');
+// // let checkbx = Array.from(checkbox);
+
+// checkbox.addEventListener('change', function () {
+//     //   checkbx.forEach(item =>{
+//     // item.addEventListener('change',go)});
+//     // function go(e){
+//     if (this.checked) {
+//         console.log('Yay! Checkbox clicked.');
+//     }
+//     else {
+//         console.log('Checkbox is unclicked.')
+//     }
+//     //   };
+// });
+
+var checkbox = document.querySelectorAll('input[name=toggle]');
+
+// checkbox.addEventListener('change', function(){
+checkbox.forEach(item => {
+    item.addEventListener('change', go)
+});
+function go() {
+    let checkbx = Array.from(checkbox);
+    checkbx
+        .filter(e => e.checked)
+        .map(e => {
+            if (e) {
+                console.log('Yay! Checkbox clicked.');
+            }
+            else {
+                console.log('Checkbox is unclicked.')
+            }
+        })
+    //   console.log(checkbx)
+};
+// });
+
+
+
+
 
 
 // Save user input to localStorage
