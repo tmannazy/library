@@ -191,40 +191,41 @@ const toggledBtn = document.querySelectorAll('input[type=checkbox][name=toggle]'
 
 // const changeStatus = evt => {
 toggledBtn.forEach(item => {
-    // const toggledBtnArr = Array.from(toggledBtn)
-    myLibrary.forEach((book, index) => {
-        let cellChange;
-        if (tableBody.row[index] && book['read'] == false) {
-            book['read'] = true;
-            cellChange = tableBody.row[index].cells;
-            cellChange[4].textContent = 'true';
-        }
-        else {
-            book['read'] = false;
-            cellChange = tableBody.row[index].cells;
-            cellChange[4].textContent = 'false';
-        }
-        return cellChange;
-    });
+    item.addEventListener('change', () => {
+        // const toggledBtnArr = Array.from(toggledBtn)
+        myLibrary.forEach((book, index) => {
+            let cellChange;
+            if (tableBody.row[index] && book['read'] == false) {
+                book['read'] = true;
+                cellChange = tableBody.row[index].cells;
+                cellChange[4].textContent = 'true';
+            }
+            else {
+                book['read'] = false;
+                cellChange = tableBody.row[index].cells;
+                cellChange[4].textContent = 'false';
+            }
+            return cellChange;
+        });
 
 
 
 
-    //     item
-    //         .filter(e => e.checked)
-    //         .map(checked => {
-    //             // if (rowBookNum === rowBookNum) {
-    //             if (checked == false) {
-    //                 e['read'] = true;
-    //                 e.read.textContent = 'true';
-    //             } else if (checked == true) {
-    //                 e['read'] = false;
-    //                 e.read.textContent = 'false';
-    //             }
-    //             // }
-    //         });
-    //     // return toggledBtnArr;
-})
+        //     item
+        //         .filter(e => e.checked)
+        //         .map(checked => {
+        //             // if (rowBookNum === rowBookNum) {
+        //             if (checked == false) {
+        //                 e['read'] = true;
+        //                 e.read.textContent = 'true';
+        //             } else if (checked == true) {
+        //                 e['read'] = false;
+        //                 e.read.textContent = 'false';
+        //             }
+        //             // }
+        //         });
+        //     // return toggledBtnArr;
+    })
 });
 // toggledBtn.addEventListener('change', changeStatus);
 
