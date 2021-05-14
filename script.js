@@ -185,25 +185,48 @@ openButton.addEventListener('click', toggleForm);
 // Create button on each book to change the read status.
 
 // const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
-// const toggledBtn = document.querySelectorAll('.slider::before');
-const toggledBtn = document.querySelectorAll('input[name=toggle]');
-const toggledBtnArr = Array.from(toggledBtn);
+// const toggledBtn = document.querySelectorAll('.slider');
+const toggledBtn = document.querySelectorAll('input[type=checkbox][name=toggle]');
+// let toggledBtnArr = [];
 
-const changeStatus = evt => {
-    const rowToChange = evt.target.closest('tr');
-    const rowBookNum = Number(rowToChange.dataset.bookNum);
-    myLibrary.forEach((item, index) => {
-        if (rowBookNum === item.num) {
-            if (item['read'] == false) {
-                item['read'] = true;
-            } else if (item['read'] == true) {
-                item['read'] = false;
-            }
+// const changeStatus = evt => {
+toggledBtn.forEach(item => {
+    // const toggledBtnArr = Array.from(toggledBtn)
+    myLibrary.forEach((book, index) => {
+        let cellChange;
+        if (tableBody.row[index] && book['read'] == false) {
+            book['read'] = true;
+            cellChange = tableBody.row[index].cells;
+            cellChange[4].textContent = 'true';
         }
+        else {
+            book['read'] = false;
+            cellChange = tableBody.row[index].cells;
+            cellChange[4].textContent = 'false';
+        }
+        return cellChange;
     });
-};
 
-toggledBtnArr.map(item => item.addEventListener('change', changeStatus));
+
+
+
+    //     item
+    //         .filter(e => e.checked)
+    //         .map(checked => {
+    //             // if (rowBookNum === rowBookNum) {
+    //             if (checked == false) {
+    //                 e['read'] = true;
+    //                 e.read.textContent = 'true';
+    //             } else if (checked == true) {
+    //                 e['read'] = false;
+    //                 e.read.textContent = 'false';
+    //             }
+    //             // }
+    //         });
+    //     // return toggledBtnArr;
+})
+});
+// toggledBtn.addEventListener('change', changeStatus);
 
 
 // let checkbox = document.querySelector('input[name=toggle]');
@@ -261,7 +284,7 @@ const isArrData = arr => {
     let keys = Object.keys(localStorage);
     for (let key of keys) {
         if (localStorage.getItem(key) === arr) {
-            continue
+            continue;
         }
         else {
             localStorage.setItem(key, JSON.stringify(myLibrary));
