@@ -75,7 +75,7 @@ const addBookToLibrary = e => {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = Number(document.getElementById('pages').value);
-    const read = document.querySelector('input[name="readbook"]:checked').value;
+    const read = document.querySelector('input[name=readbook]:checked').value;
     const comment = document.querySelector('textarea').value;
 
     let bookObj = new Book(num, title, author, pages, read, comment);
@@ -98,31 +98,30 @@ const displayLibrary = () => {
         const tableRowBody = document.createElement('tr');
         const delBtn = document.createElement('button');
         const toggleButtonLabel = document.createElement('label');
-        const toggleButtonInput = document.createElement('button');
+        const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
         tableRowBody.dataset.bookNum = `${Object.values(obj)[0]}`;
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
-        // toggleButtonInput.setAttribute('type', 'checkbox');
-        // toggleButtonInput.setAttribute('name', 'toggle');
-        toggleButtonInput.className = 'toggle'
-        toggleButtonInput.textContent = 'Read?'
+        toggleButtonInput.setAttribute('type', 'checkbox');
+        toggleButtonInput.setAttribute('name', 'toggle');
         toggleButtonSpan.className = 'slider';
 
         for (let prop in obj) {
             const tableData = document.createElement('td');
-            if (prop === 'id') {
-                tableData.textContent = index;
-            } else {
-                tableData.textContent = `${obj[prop]}`;
-            }
+            tableData.textContent = `${obj[prop]}`;
+            // if (prop === 'id') {
+            //     tableData.textContent = index;
+            // } else {
+            // }
             // let tableData;
             // let keys = Object.keys(obj);
             // for (let key of keys) {
             //     tableData = document.createElement('td');
-            //     tableData.textContent = `${Object.values(keys)}`;
+            //     // tableData.textContent = `${Object.values(keys)}`;
+            //     tableData.textContent = `${obj[key]}`;
             // }
             tableRowBody.appendChild(tableData);
 
@@ -184,13 +183,12 @@ const toggleForm = () => {
 setTimeout(toggleForm, 0);
 openButton.addEventListener('click', toggleForm);
 
-// Create button on each book to change the read status.
-
+// Create button on each book to toggle its read status.
 const changeStatus = () => {
     // const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
     // const toggledBtn = document.querySelectorAll('.slider');
-    // const toggledBtn = document.querySelectorAll('input[type=checkbox][name=toggle]');
-    const toggledBtn = document.querySelectorAll('.toggle');
+    const toggledBtn = document.querySelectorAll('input[type=checkbox][name=toggle]');
+    // const toggledBtn = document.querySelectorAll('.toggle');
     const toggledBtnArr = Array.from(toggledBtn);
     toggledBtnArr.forEach(item => {
         item.addEventListener('click', (evt) => {
@@ -202,6 +200,7 @@ const changeStatus = () => {
                         book['read'] = true;
                         cellChange = tableBody.rows[index].cells;
                         cellChange[4].textContent = 'true';
+                        toggledBtn.classList.toggle('input:checked .slider');
                     }
                     else {
                         book['read'] = false;
@@ -231,52 +230,9 @@ const changeStatus = () => {
             //     // return toggledBtnArr;
         })
     });
-    // toggledBtn.addEventListener('change', changeStatus);
 
-
-    // let checkbox = document.querySelector('input[name=toggle]');
-    // // let checkbx = Array.from(checkbox);
-
-    // checkbox.addEventListener('change', function () {
-    //     //   checkbx.forEach(item =>{
-    //     // item.addEventListener('change',go)});
-    //     // function go(e){
-    //     if (this.checked) {
-    //         console.log('Yay! Checkbox clicked.');
-    //     }
-    //     else {
-    //         console.log('Checkbox is unclicked.')
-    //     }
-    //     //   };
-    // });
-
-    var checkbox = document.querySelectorAll('input[name=toggle]');
-
-    // checkbox.addEventListener('change', function(){
-    checkbox.forEach(item => {
-        item.addEventListener('change', go)
-    });
-    function go() {
-        let checkbx = Array.from(checkbox);
-        checkbx
-            .filter(e => e.checked)
-            .map(e => {
-                if (e) {
-                    console.log('Yay! Checkbox clicked.');
-                }
-                else {
-                    console.log('Checkbox is unclicked.')
-                }
-            })
-        //   console.log(checkbx)
-    };
-    // });
-}
-
-
-
-
-
+};
+// });
 
 // Save user input to localStorage
 const saveArrData = () => {
