@@ -191,26 +191,25 @@ const changeStatus = () => {
     // const toggledBtn = document.querySelectorAll('.slider');
     // const toggledBtn = document.querySelectorAll('input[type=checkbox][name=toggle]');
     const toggledBtn = document.querySelectorAll('.toggle');
-    // let toggledBtnArr = [];
-
     const toggledBtnArr = Array.from(toggledBtn);
-    // const changeStatus = evt => {
     toggledBtnArr.forEach(item => {
         item.addEventListener('click', (evt) => {
-            const rowToChange = evt.target.closest('tr');
+            const rowToChange = evt.target.closest('tr').rowIndex;
             myLibrary.forEach((book, index) => {
                 let cellChange;
-                if (tableBody.row[index] && rowToChange && book['read'] == false) {
-                    book['read'] = true;
-                    cellChange = tableBody.row[index].cells;
-                    cellChange[4].textContent = 'true';
+                if (index + 1 === rowToChange) {
+                    if (book['read'] == false) {
+                        book['read'] = true;
+                        cellChange = tableBody.rows[index].cells;
+                        cellChange[4].textContent = 'true';
+                    }
+                    else {
+                        book['read'] = false;
+                        cellChange = tableBody.rows[index].cells;
+                        cellChange[4].textContent = 'false';
+                    }
+                    return cellChange;
                 }
-                else {
-                    book['read'] = false;
-                    cellChange = tableBody.row[index].cells;
-                    cellChange[4].textContent = 'false';
-                }
-                return cellChange;
             });
 
 
