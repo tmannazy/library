@@ -58,27 +58,28 @@
 //     }
 // ];
 let myLibrary = [];
+let count = 0;
 
-function Book(num, title, author, pages, read, comment) {
-    this.num = num;
+function Book(title, author, pages, read, comment) {
+    // this.num = num;
     this.title = title;
     this.author = author;
     this.pages = pages;
-    // this.read = status()
     this.read = read == 'yes' ? true : false;
     this.comment = comment;
 };
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    const num = new Date().getMilliseconds();
+    // const num = new Date().getMilliseconds();
+    // const num = count++;
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = Number(document.getElementById('pages').value);
     const read = document.querySelector('input[name=readbook]:checked').value;
     const comment = document.querySelector('textarea').value;
 
-    let bookObj = new Book(num, title, author, pages, read, comment);
+    let bookObj = new Book(title, author, pages, read, comment);
     myLibrary.push(bookObj);
     saveArrData();
     displayLibrary();
@@ -101,7 +102,7 @@ const displayLibrary = () => {
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
-        tableRowBody.dataset.bookNum = `${Object.values(obj)[0]}`;
+        tableRowBody.dataset.bookNum = ;
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
@@ -112,9 +113,11 @@ const displayLibrary = () => {
         for (let prop in obj) {
             const tableData = document.createElement('td');
             tableData.textContent = `${obj[prop]}`;
-            // if (prop === 'id') {
-            //     tableData.textContent = index;
+            // count = 0;
+            // if (prop === 'num') {
+            //     tableData.textContent = count;
             // } else {
+            //     tableData.textContent = `${obj[prop]}`;
             // }
             // let tableData;
             // let keys = Object.keys(obj);
@@ -150,7 +153,7 @@ const bookToDelete = () => {
         const rowToRemove = event.target.closest('tr');
         const tableBookNum = Number(rowToRemove.dataset.bookNum);
         myLibrary.forEach((item, index) => {
-            if (tableBookNum === item.num) {
+            if (tableBookNum === rowToRemove.rowIndex) {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
@@ -199,13 +202,13 @@ const changeStatus = () => {
                     if (book['read'] == false) {
                         book['read'] = true;
                         cellChange = tableBody.rows[index].cells;
-                        cellChange[4].textContent = 'true';
+                        cellChange[3].textContent = 'true';
                         toggledBtn.classList.toggle('input:checked .slider');
                     }
                     else {
                         book['read'] = false;
                         cellChange = tableBody.rows[index].cells;
-                        cellChange[4].textContent = 'false';
+                        cellChange[3].textContent = 'false';
                     }
                     return cellChange;
                 }
