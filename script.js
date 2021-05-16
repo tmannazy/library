@@ -58,7 +58,6 @@
 //     }
 // ];
 let myLibrary = [];
-let count = 0;
 
 function Book(title, author, pages, read, comment) {
     // this.num = num;
@@ -102,7 +101,7 @@ const displayLibrary = () => {
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
-        tableRowBody.dataset.bookNum = ;
+        tableRowBody.dataset.bookNum = new Date().getMilliseconds();
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
@@ -127,7 +126,6 @@ const displayLibrary = () => {
             //     tableData.textContent = `${obj[key]}`;
             // }
             tableRowBody.appendChild(tableData);
-
         }
         toggleButtonLabel.appendChild(toggleButtonInput);
         toggleButtonLabel.appendChild(toggleButtonSpan);
@@ -153,7 +151,7 @@ const bookToDelete = () => {
         const rowToRemove = event.target.closest('tr');
         const tableBookNum = Number(rowToRemove.dataset.bookNum);
         myLibrary.forEach((item, index) => {
-            if (tableBookNum === rowToRemove.rowIndex) {
+            if (rowToRemove.dataset.bookNum && rowToRemove.rowIndex) {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
@@ -188,10 +186,7 @@ openButton.addEventListener('click', toggleForm);
 
 // Create button on each book to toggle its read status.
 const changeStatus = () => {
-    // const toggledBtn = document.querySelectorAll('input[type="checkbox"]');
-    // const toggledBtn = document.querySelectorAll('.slider');
     const toggledBtn = document.querySelectorAll('input[type=checkbox][name=toggle]');
-    // const toggledBtn = document.querySelectorAll('.toggle');
     const toggledBtnArr = Array.from(toggledBtn);
     toggledBtnArr.forEach(item => {
         item.addEventListener('click', (evt) => {
@@ -213,25 +208,7 @@ const changeStatus = () => {
                     return cellChange;
                 }
             });
-
-
-
-
-            //     item
-            //     .filter(e => e.checked)
-            // .map(checked => {
-            //     // if (rowBookNum === rowBookNum) {
-            //     if (checked == false) {
-            //         e['read'] = true;
-            //         e.read.textContent = 'true';
-            //     } else if (checked == true) {
-            //         e['read'] = false;
-            //         e.read.textContent = 'false';
-            //     }
-            // }
-            // });
-            //     // return toggledBtnArr;
-        })
+        });
     });
 
 };
