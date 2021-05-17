@@ -59,7 +59,8 @@
 // ];
 let myLibrary = [];
 
-function Book(title, author, pages, read, comment) {
+function Book(id, title, author, pages, read, comment) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -69,13 +70,14 @@ function Book(title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
+    const id = Number(new Date());
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = Number(document.getElementById('pages').value);
     const read = document.querySelector('input[name=readbook]:checked').value;
     const comment = document.querySelector('textarea').value;
 
-    let bookObj = new Book(title, author, pages, read, comment);
+    let bookObj = new Book(id, title, author, pages, read, comment);
     myLibrary.push(bookObj);
     saveArrData();
     displayLibrary();
@@ -100,6 +102,7 @@ const displayLibrary = () => {
 
         tableRowBody.dataset.bookTitle = `${Object.values(obj)[0]}`;
         tableRowBody.dataset.bookPages = `${Object.values(obj)[2]}`;
+        tableRowBody.dataset.bookId = Number(new Date());
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
@@ -109,13 +112,14 @@ const displayLibrary = () => {
 
         for (let prop in obj) {
             const tableData = document.createElement('td');
-            tableData.textContent = `${obj[prop]}`;
+            // tableData.textContent = `${obj[prop]}`;
             // count = 0;
-            // if (prop === 'num') {
-            //     tableData.textContent = count;
-            // } else {
-            //     tableData.textContent = `${obj[prop]}`;
-            // }
+            if (prop === 'id') {
+                // tableData.textContent = count;
+                continue;
+            } else {
+                tableData.textContent = `${obj[prop]}`;
+            }
             // let tableData;
             // let keys = Object.keys(obj);
             // for (let key of keys) {
@@ -147,13 +151,13 @@ const bookToDelete = () => {
 
     const removeBook = event => {
         const rowToRemove = event.target.closest('tr');
-        const tableBookTitle = rowToRemove.dataset.bookTitle;
-        const tableBookPages = Number(rowToRemove.dataset.bookPages);
+        const rowBookTitle = rowToRemove.dataset.bookTitle;
+        const rowBookPages = Number(rowToRemove.dataset.bookPages);
         myLibrary.forEach((item, index) => {
-            if (tableBookTitle === item.title && tableBookPages === item.pages) {
-                myLibrary.splice(index, 1);
-                tableBody.deleteRow(index);
-            }
+            // if (rowBookTitle === item.title && rowBookPages === item.pages) {
+            //     myLibrary.splice(index, 1);
+            //     tableBody.deleteRow(index);
+            // }
         });
     };
     btnsArr.map(item => item.addEventListener('click', removeBook));
