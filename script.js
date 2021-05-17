@@ -100,9 +100,7 @@ const displayLibrary = () => {
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
-        tableRowBody.dataset.bookTitle = `${Object.values(obj)[0]}`;
-        tableRowBody.dataset.bookPages = `${Object.values(obj)[2]}`;
-        tableRowBody.dataset.bookId = Number(new Date());
+        tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
@@ -112,21 +110,11 @@ const displayLibrary = () => {
 
         for (let prop in obj) {
             const tableData = document.createElement('td');
-            // tableData.textContent = `${obj[prop]}`;
-            // count = 0;
             if (prop === 'id') {
-                // tableData.textContent = count;
                 continue;
             } else {
                 tableData.textContent = `${obj[prop]}`;
             }
-            // let tableData;
-            // let keys = Object.keys(obj);
-            // for (let key of keys) {
-            //     tableData = document.createElement('td');
-            //     // tableData.textContent = `${Object.values(keys)}`;
-            //     tableData.textContent = `${obj[key]}`;
-            // }
             tableRowBody.appendChild(tableData);
         }
         toggleButtonLabel.appendChild(toggleButtonInput);
@@ -151,13 +139,12 @@ const bookToDelete = () => {
 
     const removeBook = event => {
         const rowToRemove = event.target.closest('tr');
-        const rowBookTitle = rowToRemove.dataset.bookTitle;
-        const rowBookPages = Number(rowToRemove.dataset.bookPages);
+        const rowBookId = Number(rowToRemove.dataset.bookId);
         myLibrary.forEach((item, index) => {
-            // if (rowBookTitle === item.title && rowBookPages === item.pages) {
-            //     myLibrary.splice(index, 1);
-            //     tableBody.deleteRow(index);
-            // }
+            if (rowBookId === item.id) {
+                myLibrary.splice(index, 1);
+                tableBody.deleteRow(index);
+            }
         });
     };
     btnsArr.map(item => item.addEventListener('click', removeBook));
@@ -236,4 +223,3 @@ const isArrData = arr => {
         }
     }
 }
-// console.log(myLibrary);
