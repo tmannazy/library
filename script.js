@@ -60,7 +60,6 @@
 let myLibrary = [];
 
 function Book(title, author, pages, read, comment) {
-    // this.num = num;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -70,8 +69,6 @@ function Book(title, author, pages, read, comment) {
 
 const addBookToLibrary = e => {
     e.preventDefault();
-    // const num = new Date().getMilliseconds();
-    // const num = count++;
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = Number(document.getElementById('pages').value);
@@ -101,7 +98,8 @@ const displayLibrary = () => {
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
-        tableRowBody.dataset.bookNum = new Date().getMilliseconds();
+        tableRowBody.dataset.bookTitle = `${Object.values(obj)[0]}`;
+        tableRowBody.dataset.bookPages = `${Object.values(obj)[2]}`;
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
@@ -149,9 +147,10 @@ const bookToDelete = () => {
 
     const removeBook = event => {
         const rowToRemove = event.target.closest('tr');
-        const tableBookNum = Number(rowToRemove.dataset.bookNum);
+        const tableBookTitle = rowToRemove.dataset.bookTitle;
+        const tableBookPages = Number(rowToRemove.dataset.bookPages);
         myLibrary.forEach((item, index) => {
-            if (rowToRemove.dataset.bookNum && rowToRemove.rowIndex) {
+            if (tableBookTitle === item.title && tableBookPages === item.pages) {
                 myLibrary.splice(index, 1);
                 tableBody.deleteRow(index);
             }
