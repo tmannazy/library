@@ -6,36 +6,80 @@
 body {
     background-color: #78afff;
     background-color: rgba(98, 67, 149, 0.5);
+    /* background-image: url('./img/public-libraries.jpg'); */
+    /* background-position: center; */
+    /* background-repeat: repeat-x; */
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid brown; */
+    border-bottom: 1px inset brown;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    align-items: center;
+    height: 100px;
 }
 
 h1 {
     text-align: center;
-    border: 2px solid whitesmoke;
-    padding-top: 0;
-    display: inline-block;
-    /* width: 200px; */
-    /* padding-bottom: 20px; */
+    /* border: 2px solid whitesmoke; */
+    /* align-self: center; */
     text-transform: uppercase;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.img-book {
-    /* display: flex; */
-    flex-direction: row;
-    border: 1px solid red;
-    /* padding: 10px; */
-    /* display: i; */
-    /* width: 50px; */
-
-}
-
 img {
-    height: 50px;
+    height: 100px;
     border-radius: 50%;
-    border: 2px solid palevioletred;
+    /* border: 2px solid palevioletred; */
+    order: 1;
     /* background-color: rgba(0, 0, 0, 0.2); */
     /* width: 10px; */
     mix-blend-mode: multiply;
+}
+
+.book-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* border: 2px ridge yellow; */
+    align-items: center;
+    height: 100px;
+    margin: 40px 0;
+}
+
+.book-button p {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 500;
+}
+
+.book-button button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.book-button button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+
+.book-info {
+    border: 2px solid red;
+    display: flex;
 }
 
 table,
