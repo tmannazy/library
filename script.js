@@ -90,19 +90,15 @@ button.addEventListener('click', addBookToLibrary);
 // This function loops through the array
 // to display the books in a table format or card.
 const bookDisplay = document.querySelector('.book-display')
-// const tableBody = document.querySelector('tbody');
-const bookDivBody = document.querySelector('.book-body');
 
 const displayLibrary = () => {
     const generateTableFromObject = (obj, index) => {
-        // const tableRowBody = document.createElement('tr');
         const bookDiv = document.createElement('div');
         const delBtn = document.createElement('button');
         const toggleButtonLabel = document.createElement('label');
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
-        // tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`
         bookDiv.dataset.bookId = `${Object.values(obj)[0]}`
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
@@ -112,7 +108,6 @@ const displayLibrary = () => {
         toggleButtonSpan.className = 'slider';
 
         for (let prop in obj) {
-            // const tableData = document.createElement('td');
             const bookDivData = document.createElement('div');
             switch (prop) {
                 case 'id':
@@ -140,22 +135,14 @@ const displayLibrary = () => {
                 default:
                     break;
             }
-            // tableRowBody.appendChild(tableData);
             bookDiv.appendChild(bookDivData);
         }
         toggleButtonLabel.appendChild(toggleButtonInput);
         toggleButtonLabel.appendChild(toggleButtonSpan);
-        // tableRowBody.appendChild(delBtn);
-        // tableRowBody.appendChild(toggleButtonLabel);
-        // tableBody.appendChild(tableRowBody);
         bookDiv.appendChild(delBtn);
         bookDiv.appendChild(toggleButtonLabel);
-        // bookDivBody.appendChild(bookDiv);
         bookDisplay.appendChild(bookDiv);
     }
-    // while (tableBody.firstChild) {
-    //     tableBody.firstChild.remove();
-    // }
     while (bookDisplay.firstChild) {
         bookDisplay.firstChild.remove();
     }
@@ -185,17 +172,12 @@ const bookToDelete = () => {
 
 // Button to click and add NEW BOOK in a FORM format
 // with details for the book; Author, Title, Number of Pages, Read or not
-let formStatus = document.querySelector('.book-info');
-let openButton = document.querySelector('.toggle-form');
-
-const showForm = () => {
-    document.querySelector('.book-info').style.display = 'block';
-};
+const formStatus = document.querySelector('.book-info');
+const openButton = document.querySelector('.toggle-form');
 
 const toggleForm = () => {
     if (formStatus.style.display === 'none') {
         formStatus.style.display = 'block';
-        openButton.textContent = 'Click To Close Form';
     }
     else {
         formStatus.style.display = 'none';
