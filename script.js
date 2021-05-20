@@ -89,7 +89,7 @@ button.addEventListener('click', addBookToLibrary);
 
 // This function loops through the array
 // to display the books in a table format or card.
-const table = document.querySelector('.book-table')
+const bookDisplay = document.querySelector('.book-display')
 // const tableBody = document.querySelector('tbody');
 const bookDivBody = document.querySelector('.book-body');
 
@@ -119,18 +119,23 @@ const displayLibrary = () => {
                     continue;
                 case 'title':
                     bookDivData.textContent = `Title: ${obj[prop]}`;
+                    bookDivData.className = 'title';
                     break;
                 case 'author':
                     bookDivData.textContent = `Author: ${obj[prop]}`;
+                    bookDivData.className = 'author';
                     break;
                 case 'pages':
                     bookDivData.textContent = `Pages: ${obj[prop]}`;
+                    bookDivData.className = 'pages';
                     break;
                 case 'read':
                     bookDivData.textContent = `Read: ${obj[prop]}`;
+                    bookDivData.className = 'read';
                     break;
                 case 'comment':
                     bookDivData.textContent = `${obj[prop]}`;
+                    bookDivData.className = 'comment';
                     break;
                 default:
                     break;
@@ -145,13 +150,14 @@ const displayLibrary = () => {
         // tableBody.appendChild(tableRowBody);
         bookDiv.appendChild(delBtn);
         bookDiv.appendChild(toggleButtonLabel);
-        bookDivBody.appendChild(bookDiv);
+        // bookDivBody.appendChild(bookDiv);
+        bookDisplay.appendChild(bookDiv);
     }
     // while (tableBody.firstChild) {
     //     tableBody.firstChild.remove();
     // }
-    while (bookDivBody.firstChild) {
-        bookDivBody.firstChild.remove();
+    while (bookDisplay.firstChild) {
+        bookDisplay.firstChild.remove();
     }
 
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
