@@ -1,17 +1,19 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #78afff;
-    background-color: rgba(98, 67, 149, 0.5);
+    /* background-color: rgba(98, 67, 149, 0.5); */
+    background-color: #351C09;
     /* background-image: url('./img/public-libraries.jpg'); */
     /* background-position: center; */
     /* background-repeat: repeat-x; */
 }
 
 header {
+    background-color: #E6DBF9;
     display: flex;
     justify-content: center;
     /* border: 2px solid brown; */
@@ -24,6 +26,7 @@ header {
 
 h1 {
     text-align: center;
+    color: #5A18CD;
     /* border: 2px solid whitesmoke; */
     /* align-self: center; */
     text-transform: uppercase;
@@ -55,12 +58,16 @@ img {
     text-transform: capitalize;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 500;
+    font-style: italic;
+    color: #E6DBF9;
+    text-shadow: 1px 2px 9px #FD750D;
+    text-decoration: violet;
 }
 
 .book-button button {
-    background-color: #4CAF50;
+    background-color: #5A18CD;
     border: none;
-    color: white;
+    color: #E6DBF9;
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
@@ -72,14 +79,66 @@ img {
 }
 
 .book-button button:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid #4CAF50;
+    background-color: #E6DBF9;
+    color: #5A18CD;
+    border: 1px solid #351C09;
 }
 
 .book-info {
-    border: 2px solid red;
-    display: flex;
+    padding: 20px;
+    background-color: #E6DBF9;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.2);
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 1px 2px 6px 5px rgb(0, 0, 0, 0.2);
+    margin: 20px 0;
+}
+
+button#submit {
+    font-weight: 400;
+    width: 100%;
+    background-color: #5A18CD;
+    color: #E6DBF9;
+    padding: 10px 8px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+button#submit:hover {
+    font-weight: 500;
+    background-color: #E6DBF9;
+    color: #5A18CD;
+    box-shadow:
+        inset 0 -5em 3em rgba(0, 0, 0, 0.1),
+        0 0 7px 1px rgb(255, 255, 255),
+        0.2em 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.4);
+}
+
+button#submit:active {
+    font-weight: 500;
+    box-shadow: inset 0 -5em 3em rgba(0, 0, 0, 0.1),
+        0 0 7px 1px rgb(255, 255, 255),
+        0.1em -0.2em 0.1em 0.1em rgba(0, 0, 0, 0.4);
 }
 
 table,
