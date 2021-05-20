@@ -90,17 +90,20 @@ button.addEventListener('click', addBookToLibrary);
 // This function loops through the array
 // to display the books in a table format or card.
 const table = document.querySelector('.book-table')
-const tableBody = document.querySelector('tbody');
+// const tableBody = document.querySelector('tbody');
+const bookDivBody = document.querySelector('.book-body');
 
 const displayLibrary = () => {
     const generateTableFromObject = (obj, index) => {
-        const tableRowBody = document.createElement('tr');
+        // const tableRowBody = document.createElement('tr');
+        const bookDiv = document.createElement('div');
         const delBtn = document.createElement('button');
         const toggleButtonLabel = document.createElement('label');
         const toggleButtonInput = document.createElement('input');
         const toggleButtonSpan = document.createElement('span');
 
-        tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`
+        // tableRowBody.dataset.bookId = `${Object.values(obj)[0]}`
+        bookDiv.dataset.bookId = `${Object.values(obj)[0]}`
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
@@ -109,22 +112,46 @@ const displayLibrary = () => {
         toggleButtonSpan.className = 'slider';
 
         for (let prop in obj) {
-            const tableData = document.createElement('td');
-            if (prop === 'id') {
-                continue;
-            } else {
-                tableData.textContent = `${obj[prop]}`;
+            // const tableData = document.createElement('td');
+            const bookDivData = document.createElement('div');
+            switch (prop) {
+                case 'id':
+                    continue;
+                case 'title':
+                    bookDivData.textContent = `Title: ${obj[prop]}`;
+                    break;
+                case 'author':
+                    bookDivData.textContent = `Author: ${obj[prop]}`;
+                    break;
+                case 'pages':
+                    bookDivData.textContent = `Pages: ${obj[prop]}`;
+                    break;
+                case 'read':
+                    bookDivData.textContent = `Read: ${obj[prop]}`;
+                    break;
+                case 'comment':
+                    bookDivData.textContent = `${obj[prop]}`;
+                    break;
+                default:
+                    break;
             }
-            tableRowBody.appendChild(tableData);
+            // tableRowBody.appendChild(tableData);
+            bookDiv.appendChild(bookDivData);
         }
         toggleButtonLabel.appendChild(toggleButtonInput);
         toggleButtonLabel.appendChild(toggleButtonSpan);
-        tableRowBody.appendChild(delBtn);
-        tableRowBody.appendChild(toggleButtonLabel);
-        tableBody.appendChild(tableRowBody);
+        // tableRowBody.appendChild(delBtn);
+        // tableRowBody.appendChild(toggleButtonLabel);
+        // tableBody.appendChild(tableRowBody);
+        bookDiv.appendChild(delBtn);
+        bookDiv.appendChild(toggleButtonLabel);
+        bookDivBody.appendChild(bookDiv);
     }
-    while (tableBody.firstChild) {
-        tableBody.firstChild.remove();
+    // while (tableBody.firstChild) {
+    //     tableBody.firstChild.remove();
+    // }
+    while (bookDivBody.firstChild) {
+        bookDivBody.firstChild.remove();
     }
 
     const libraryBooks = myLibrary.forEach(generateTableFromObject);
