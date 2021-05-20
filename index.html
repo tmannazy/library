@@ -15,9 +15,11 @@
                 <img src="./img/960x0.jpg" alt="Book Image">
                 <h1>eao library</h1>
             </header>
-            <p>simply enter your best collection of books</p>
-            <button class="toggle-form">
-            </button>
+            <div class="book-button">
+                <p>share your best collection of books</p>
+                <button class="toggle-form">
+                </button>
+            </div>
             <div class="book-info">
                 <form id="bookData">
                     <p>Kindly supply your Book information below</p>
@@ -28,12 +30,13 @@
                     <label for="pages">Book Pages</label>
                     <input type="text" name="pages" id="pages">
                     <p>Have you finished reading the book?</p>
-                    <label for="yes">Yes</label>
+                    <label class="selection" for="yes">Yes</label>
                     <input type="radio" name="readbook" id="yes" value="yes" checked="checked">
-                    <label for="no">No</label>
+                    <label class="selection" for="no">No</label>
                     <input type="radio" name="readbook" id="no" value="no">
-                    <label for="comments">Comment on Book</label>
-                    <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+                    <label class="comments" for="comments">Comment on Book</label>
+                    <textarea name="comments" id="comments" cols="30" rows="10"
+                        placeholder="Your best highlights in the book..."></textarea>
                     <button type="submit" id="submit">Submit</button>
                 </form>
             </div>
