@@ -54,7 +54,7 @@ img {
 }
 
 .book-button p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-transform: capitalize;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 500;
@@ -68,11 +68,11 @@ img {
     background-color: #5A18CD;
     border: none;
     color: #E6DBF9;
-    padding: 16px 32px;
+    padding: 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -86,10 +86,24 @@ img {
 
 .book-info {
     padding: 20px;
-    background-color: #E6DBF9;
+    background-color: hsl(262, 71%, 92%);
+    color: #351C09;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.book-info p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
 }
 
 input[type=text] {
+    color: #5A18CD;
+    /* background-color: #351C09; */
     width: 100%;
     padding: 10px 10px;
     margin: 8px 0;
@@ -100,7 +114,48 @@ input[type=text] {
     box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.2);
 }
 
+input[type=text]:focus {
+    color: #E6DBF9;
+    background-color: #351C09;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.2);
+    font-size: 1.1rem;
+
+}
+
+label {
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 9px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.comments {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 10px;
+}
+
+.selection {
+    margin-left: 150px;
+}
+
 textarea {
+    color: #5A18CD;
     width: 100%;
     resize: vertical;
     padding: 15px;
@@ -109,6 +164,23 @@ textarea {
     outline: none;
     box-shadow: 1px 2px 6px 5px rgb(0, 0, 0, 0.2);
     margin: 20px 0;
+    height: 150px
+}
+
+textarea:focus {
+    color: #E6DBF9;
+    background-color: #351C09;
+    width: 100%;
+    resize: vertical;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 1px 2px 6px 5px rgb(0, 0, 0, 0.2);
+    margin: 20px 0;
+    height: 150px;
+    font-size: 1.1rem;
+
 }
 
 button#submit {
