@@ -166,7 +166,7 @@ const toggleForm = () => {
     }
     else {
         formStatus.style.display = 'none';
-        openButton.textContent = 'Enter Book Details';
+        openButton.textContent = 'Add Book';
     }
 };
 
@@ -183,26 +183,27 @@ const changeStatus = () => {
             const rowToChange = evt.target.closest('tr').rowIndex;
             myLibrary.forEach((book, index) => {
                 let cellChange;
+                // let spanChange = docum
                 if (index + 1 === rowToChange) {
                     if (book['read'] == false) {
                         book['read'] = true;
                         cellChange = tableBody.rows[index].cells;
                         cellChange[3].textContent = 'true';
-                        toggledBtn.classList.toggle('input:checked .slider');
+                        item.classList.add('.true-color');
                     }
                     else {
                         book['read'] = false;
                         cellChange = tableBody.rows[index].cells;
                         cellChange[3].textContent = 'false';
+                        item.classList.remove('.false-color');
                     }
-                    return cellChange;
+                    // return cellChange;
                 }
             });
         });
     });
 
 };
-// });
 
 // Save user input to localStorage
 const saveArrData = () => {
