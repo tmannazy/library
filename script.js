@@ -159,12 +159,12 @@ const bookToDelete = () => {
     const btnsArr = Array.from(delBook);
 
     const removeBook = event => {
-        const rowToRemove = event.target.closest('tr');
-        const rowBookId = Number(rowToRemove.dataset.bookId);
+        const divToRemove = event.target.closest('div');
+        const divBookId = Number(divToRemove.dataset.bookId);
         myLibrary.forEach((item, index) => {
-            if (rowBookId === item.id) {
+            if (divBookId === item.id) {
                 myLibrary.splice(index, 1);
-                tableBody.deleteRow(index);
+                divToRemove.remove();
             }
         });
     };
