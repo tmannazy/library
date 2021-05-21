@@ -33,10 +33,7 @@ h1 {
 img {
     height: 100px;
     border-radius: 50%;
-    /* border: 2px solid palevioletred; */
     order: 1;
-    /* background-color: rgba(0, 0, 0, 0.2); */
-    /* width: 10px; */
     mix-blend-mode: multiply;
 }
 
@@ -95,11 +92,17 @@ img {
 }
 
 .book-info p {
-    text-align: center;
+    /* text-align: center; */
     margin-bottom: 15px;
     font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 700;
+}
+
+.exit-btn {
+    border: none;
+    outline: none;
+    padding: 10px;
 }
 
 input[type=text] {
@@ -184,7 +187,7 @@ textarea:focus {
 
 }
 
-button#submit {
+#submit {
     font-weight: 400;
     width: 100%;
     background-color: #5A18CD;
@@ -222,6 +225,8 @@ button#submit:active {
 }
 
 .book-series {
+    display: flex;
+    flex-flow: column wrap;
     border-radius: 10px;
     background-color: #FD750D;
     margin: 20px;
@@ -236,14 +241,14 @@ button#submit:active {
 .pages,
 .read,
 .comment {
-    padding: 15px;
+    padding: 10px 40px;
+    text-align: center;
 }
 
 .title {
     border-bottom: 1px solid #351C09;
     background-color: #E6DBF9;
     color: #5A18CD;
-    /* margin-bottom: 10px; */
 }
 
 .comment {
@@ -251,7 +256,32 @@ button#submit:active {
     color: #E6DBF9;
     border-top-width: 2px;
     border-top-style: groove;
-    border-top-color: #99CC33;
+}
+
+.delete-book {
+    width: 50%;
+    margin: 10px auto;
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: #E6DBF9;
+    background-color: rgba(53, 28, 9, 0.863);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.delete-book:hover {
+    background-color: #E6DBF9;
+    color: #351c09;
+}
+
+.delete-book:active {
+    box-shadow:
+        inset 2px 3px 0px rgba(0, 0, 0, 0.1),
+        2px -4px 5px 1px rgba(0, 0, 0, 0.1),
+        2px 3px 1px 1px rgba(0, 0, 0, 0.7);
+
 }
 
 .table,
