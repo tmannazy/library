@@ -107,7 +107,6 @@ img {
 
 input[type=text] {
     color: #5A18CD;
-    /* background-color: #351C09; */
     width: 100%;
     padding: 10px 10px;
     margin: 8px 0;
@@ -121,16 +120,7 @@ input[type=text] {
 input[type=text]:focus {
     color: #E6DBF9;
     background-color: #351C09;
-    width: 100%;
-    padding: 10px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    box-shadow: 2px 2px 5px 2px rgb(0, 0, 0, 0.2);
     font-size: 1.1rem;
-
 }
 
 label {
@@ -174,20 +164,11 @@ textarea {
 textarea:focus {
     color: #E6DBF9;
     background-color: #351C09;
-    width: 100%;
-    resize: vertical;
-    padding: 15px;
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    box-shadow: 1px 2px 6px 5px rgb(0, 0, 0, 0.2);
-    margin: 20px 0;
-    height: 150px;
     font-size: 1.1rem;
 
 }
 
-#submit {
+button#submit {
     font-weight: 400;
     width: 100%;
     background-color: #5A18CD;
@@ -225,11 +206,9 @@ button#submit:active {
 }
 
 .book-series {
-    display: flex;
-    flex-flow: column wrap;
     border-radius: 10px;
     background-color: #FD750D;
-    margin: 20px;
+    margin: 20px 10px;
 }
 
 .book-series:nth-child(2n) {
@@ -249,6 +228,7 @@ button#submit:active {
     border-bottom: 1px solid #351C09;
     background-color: #E6DBF9;
     color: #5A18CD;
+    font-weight: 800;
 }
 
 .comment {
@@ -260,6 +240,7 @@ button#submit:active {
 
 .delete-book {
     width: 50%;
+    display: block;
     margin: 10px auto;
     padding: 8px;
     outline: none;
