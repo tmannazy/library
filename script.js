@@ -174,6 +174,11 @@ const bookToDelete = () => {
 // with details for the book; Author, Title, Number of Pages, Read or not
 const formStatus = document.querySelector('.book-info');
 const openButton = document.querySelector('.toggle-form');
+const submitBtn = document.querySelector('#submit');
+
+submitBtn.addEventListener('click', () => {
+    formStatus.style.display = 'none';
+});
 
 const toggleForm = () => {
     if (formStatus.style.display === 'none') {
