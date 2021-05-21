@@ -6,17 +6,14 @@
 
 body {
     /* background-color: rgba(98, 67, 149, 0.5); */
-    background-color: #351C09;
-    /* background-image: url('./img/public-libraries.jpg'); */
-    /* background-position: center; */
-    /* background-repeat: repeat-x; */
+    background-color: #351c09;
 }
 
 header {
     background-color: #E6DBF9;
     display: flex;
     justify-content: center;
-    /* border: 2px solid brown; */
+    /* border: 2px solid whitesmoke; */
     border-bottom: 1px inset brown;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
@@ -47,7 +44,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* border: 2px ridge yellow; */
+    border: 2px ridge yellow;
     align-items: center;
     height: 100px;
     margin: 40px 0;
@@ -213,7 +210,19 @@ button#submit:active {
         0.1em -0.2em 0.1em 0.1em rgba(0, 0, 0, 0.4);
 }
 
-table,
+.book-display {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.book-series {
+    background-color: #FD750D;
+    margin: 20px;
+}
+
+.table,
 th,
 td {
     border: 1px solid black;
