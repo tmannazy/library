@@ -176,8 +176,13 @@ const bookToDelete = () => {
 const formStatus = document.querySelector('.book-info');
 const openButton = document.querySelector('.toggle-form');
 const submitBtn = document.querySelector('#submit');
+const exitBtn = document.querySelector('.exit-btn');
 
 submitBtn.addEventListener('click', () => {
+    formStatus.style.display = 'none';
+});
+
+exitBtn.addEventListener('click', () => {
     formStatus.style.display = 'none';
 });
 
