@@ -100,6 +100,7 @@ const displayLibrary = () => {
         const toggleButtonSpan = document.createElement('span');
 
         bookDiv.dataset.bookId = `${Object.values(obj)[0]}`
+        bookDiv.className = 'book-series';
         delBtn.textContent = 'X';
         delBtn.className = 'delete-book';
         toggleButtonLabel.className = 'switch';
