@@ -25,8 +25,10 @@
             </div>
             <div class="book-info">
                 <form id="bookData">
-                    <p>Kindly supply your Book information below</p>
-                    <button class="exit-btn">X</button>
+                    <div class="instruction">
+                        <p>Kindly supply your Book information below</p>
+                        <button class="exit-btn">X</button>
+                    </div>
                     <label for="title">Book Title</label>
                     <input type="text" name="title" id="title">
                     <label for="author">Book Author</label>
@@ -39,7 +41,7 @@
                     <label class="selection" for="no">No</label>
                     <input type="radio" name="readbook" id="no" value="no">
                     <label class="comments" for="comments">Comment on Book</label>
-                    <textarea name="comments" id="comments" cols="30" rows="10"
+                    <textarea name="comments" id="comments" maxlength="100" cols="10" rows="5"
                         placeholder="Your best highlights in the book..."></textarea>
                     <button type="submit" id="submit">Submit</button>
                 </form>
