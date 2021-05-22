@@ -293,8 +293,9 @@ button#submit:active {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
+    width: 100px;
     height: 34px;
+    left: 100px;
 }
 
 .switch input {
@@ -351,6 +352,14 @@ input:checked+.slider:before {
 
 
 @media only screen and (max-width:600px) {
+    .book-button p {
+        font-size: 1rem;
+    }
+
+    .book-button button {
+        font-size: 0.8rem;
+    }
+
     .book-info {
         /* place-items: center; */
         left: 0px;
