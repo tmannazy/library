@@ -399,4 +399,8 @@ input:checked+.slider:before {
     .book-series {
         width: 60%;
     }
+
+    .switch {
+        left: 70px;
+    }
 }
