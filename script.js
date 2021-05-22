@@ -175,15 +175,12 @@ const bookToDelete = () => {
 // with details for the book; Author, Title, Number of Pages, Read or not
 const formStatus = document.querySelector('.book-info');
 const openButton = document.querySelector('.toggle-form');
-const submitBtn = document.querySelector('#submit');
-const exitBtn = document.querySelector('.exit-btn');
+const closeForm = document.querySelectorAll('.book-info button');
 
-submitBtn.addEventListener('click', () => {
-    formStatus.style.display = 'none';
-});
-
-exitBtn.addEventListener('click', () => {
-    formStatus.style.display = 'none';
+closeForm.forEach(item => {
+    item.addEventListener('click', () => {
+        formStatus.style.display = 'none';
+    });
 });
 
 const toggleForm = () => {
@@ -206,7 +203,7 @@ const changeStatus = () => {
     const toggledBtnArr = Array.from(toggledBtn);
     toggledBtnArr.forEach(item => {
         item.addEventListener('click', (evt) => {
-            const rowToChange = evt.target.closest('tr').rowIndex;
+            const rowToChange = evt.target.closest('div');
             myLibrary.forEach((book, index) => {
                 let cellChange;
                 // let spanChange = docum
