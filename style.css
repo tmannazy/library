@@ -256,6 +256,7 @@ button#submit:active {
     color: #E6DBF9;
     border-top-width: 2px;
     border-top-style: groove;
+    word-wrap: break-word;
 }
 
 .delete-book {
@@ -345,4 +346,47 @@ input:checked+.slider:before {
 
 .false-color {
     background-color: #ef0717;
+}
+
+
+@media only screen and (max-width:600px) {
+    .book-info {
+        /* place-items: center; */
+        left: 0px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .book-info p,
+    .instruction p {
+        font-size: 0.9rem;
+    }
+
+    .exit-btn {
+        width: 30px;
+        height: 30px;
+        padding: 0 5px;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    input[type=text] {
+        font-size: 0.7rem;
+    }
+
+    input[type=text]:focus,
+    textarea:focus {
+        font-size: 0.8rem;
+    }
+
+    button#submit {
+        width: 100px;
+        padding: 10px;
+    }
+
+    .book-series {
+        width: 60%;
+    }
 }
