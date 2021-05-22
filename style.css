@@ -229,6 +229,7 @@ button#submit:active {
     border-radius: 10px;
     background-color: #FD750D;
     margin: 20px 10px;
+    width: 20%;
 }
 
 .book-series:nth-child(2n) {
