@@ -203,21 +203,28 @@ const changeStatus = () => {
     const toggledBtnArr = Array.from(toggledBtn);
     toggledBtnArr.forEach(item => {
         item.addEventListener('click', (evt) => {
-            const rowToChange = evt.target.closest('div');
+            // const divToChange = document.querySele
+            // const divToChange = evt.target.closest('div');
+            const divToChange = Array.from(evt.target.closest('div').parentElement.children).indexOf(evt);
+            // const divToChange = evt.target.closest('div').children;
+            // const rowToChange = evt.target.closest('div');
+            // rowToChange.parentElement.children
             myLibrary.forEach((book, index) => {
                 let cellChange;
                 // let spanChange = docum
-                if (index + 1 === rowToChange) {
+                if (index === divToChange) {
                     if (book['read'] == false) {
                         book['read'] = true;
-                        cellChange = tableBody.rows[index].cells;
-                        cellChange[3].textContent = 'true';
+                        // cellChange = tableBody.rows[index].cells;
+                        cellChange = document.querySelectorAll('.book-series').children;
+                        cellChange[3].textContent = 'Read: true';
                         item.classList.add('.true-color');
                     }
                     else {
                         book['read'] = false;
-                        cellChange = tableBody.rows[index].cells;
-                        cellChange[3].textContent = 'false';
+                        // cellChange = tableBody.rows[index].cells;
+                        cellChange = document.querySelectorAll('.book-series').children;
+                        cellChange[3].textContent = 'Read: false';
                         item.classList.remove('.false-color');
                     }
                     // return cellChange;
