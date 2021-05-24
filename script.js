@@ -211,19 +211,16 @@ const changeStatus = () => {
                 if (index === divToChange) {
                     if (book['read'] == false) {
                         book['read'] = true;
-                        // cellChange = tableBody.rows[index].cells;
-                        cellChange = document.querySelectorAll('.book-series').children;
-                        cellChange[3].textContent = 'Read: true';
+                        cellChange = Array.from(divToChangeIndex.children)[3];
+                        cellChange.textContent = 'Read: true';
                         item.classList.add('.true-color');
                     }
                     else {
                         book['read'] = false;
-                        // cellChange = tableBody.rows[index].cells;
-                        cellChange = document.querySelectorAll('.book-series').children;
-                        cellChange[3].textContent = 'Read: false';
+                        cellChange = Array.from(divToChangeIndex.children)[3];
+                        cellChange.textContent = 'Read: false';
                         item.classList.remove('.false-color');
                     }
-                    // return cellChange;
                 }
             });
         });
