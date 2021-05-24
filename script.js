@@ -203,12 +203,8 @@ const changeStatus = () => {
     const toggledBtnArr = Array.from(toggledBtn);
     toggledBtnArr.forEach(item => {
         item.addEventListener('click', (evt) => {
-            // const divToChange = document.querySele
-            // const divToChange = evt.target.closest('div');
-            const divToChange = Array.from(evt.target.closest('div').parentElement.children).indexOf(evt);
-            // const divToChange = evt.target.closest('div').children;
-            // const rowToChange = evt.target.closest('div');
-            // rowToChange.parentElement.children
+            const divToChangeIndex = evt.target.closest('div');
+            const divToChange = Array.from(divToChangeIndex.parentElement.children).indexOf(divToChangeIndex);
             myLibrary.forEach((book, index) => {
                 let cellChange;
                 // let spanChange = docum
