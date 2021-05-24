@@ -57,7 +57,13 @@
 //         read: false
 //     }
 // ];
-let myLibrary = [];
+let myLibrary = [{
+    title: 'YDKJS',
+    author: 'Kyle Simpson',
+    pages: 300,
+    read: false,
+    comment: 'After reading this book you will affirm you don\'t know JS truly.'
+}];
 
 function Book(id, title, author, pages, read, comment) {
     this.id = id;
@@ -80,7 +86,7 @@ const addBookToLibrary = e => {
     let bookObj = new Book(id, title, author, pages, read, comment);
     myLibrary.push(bookObj);
     saveArrData();
-    displayLibrary();
+    // displayLibrary();
 };
 
 let button = document.querySelector('#submit');
@@ -207,19 +213,16 @@ const changeStatus = () => {
             const divToChange = Array.from(divToChangeIndex.parentElement.children).indexOf(divToChangeIndex);
             myLibrary.forEach((book, index) => {
                 let cellChange;
-                // let spanChange = docum
                 if (index === divToChange) {
                     if (book['read'] == false) {
                         book['read'] = true;
                         cellChange = Array.from(divToChangeIndex.children)[3];
                         cellChange.textContent = 'Read: true';
-                        item.classList.add('.true-color');
                     }
                     else {
                         book['read'] = false;
                         cellChange = Array.from(divToChangeIndex.children)[3];
                         cellChange.textContent = 'Read: false';
-                        item.classList.remove('.false-color');
                     }
                 }
             });
@@ -247,3 +250,4 @@ const isArrData = arr => {
         }
     }
 }
+displayLibrary();
