@@ -113,11 +113,7 @@ const displayLibrary = () => {
         toggleButtonInput.setAttribute('type', 'checkbox');
         toggleButtonInput.setAttribute('name', 'toggle');
         toggleButtonSpan.className = 'slider';
-        // if (`${Object.values(obj)[4]}` === ''Yes'') {
-        //     toggleButtonSpan.style.backgroundColor = '#5A18CD';
-        // } else {
-        //     toggleButtonSpan.style.backgroundColor = '#ef0717';
-        // }
+
         for (let prop in obj) {
             const bookDivData = document.createElement('div');
             switch (prop) {
@@ -140,7 +136,7 @@ const displayLibrary = () => {
                     if (`${obj[prop]}` === 'Yes') {
                         toggleButtonSpan.style.backgroundColor = '#5A18CD';
                     } else {
-                        toggleButtonSpan.style.backgroundColor = '#ef0717';
+                        toggleButtonSpan.style.backgroundColor = '#EF0717';
                     }
                     bookDivData.className = 'read';
                     break;
@@ -222,16 +218,21 @@ const changeStatus = () => {
             const divToChange = Array.from(divToChangeIndex.parentElement.children).indexOf(divToChangeIndex);
             myLibrary.forEach((book, index) => {
                 let cellChange;
+                let changeBtnColor = Array.from(document.querySelectorAll('.slider'));
+                // let changeBtnColor = document.querySelector('.slider');
                 if (index === divToChange) {
                     if (book['read'] == 'No') {
                         book['read'] = 'Yes';
                         cellChange = Array.from(divToChangeIndex.children)[3];
                         cellChange.textContent = 'Read: Yes';
+                        changeBtnColor.forEach(item => item.classList.toggle('true-color')
+                        );
                     }
                     else {
                         book['read'] = 'No';
                         cellChange = Array.from(divToChangeIndex.children)[3];
                         cellChange.textContent = 'Read: No';
+                        changeBtnColor.forEach(changeColor => changeColor.classList.toggle('false-color'));
                     }
                 }
             });
