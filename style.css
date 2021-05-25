@@ -311,10 +311,16 @@ button#submit:active {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    border-radius: 4px;
+    /* background-color: #E6DBF9; */
     -webkit-transition: .4s;
     transition: .4s;
 }
+
+/* .slider:after {
+    content: "true";
+    margin: 0 auto;
+} */
 
 .slider:before {
     position: absolute;
@@ -328,12 +334,8 @@ button#submit:active {
     transition: .4s;
 }
 
-input:checked+.slider {
-    background-color: #2196F3;
-}
-
 input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 10px #040505;
 }
 
 input:checked+.slider:before {
@@ -343,11 +345,11 @@ input:checked+.slider:before {
 }
 
 .true-color {
-    background-color: #94ff95;
+    background-color: #5A18CD;
 }
 
 .false-color {
-    background-color: #ef0717;
+    background-color: #EF0717;
 }
 
 
@@ -361,7 +363,6 @@ input:checked+.slider:before {
     }
 
     .book-info {
-        /* place-items: center; */
         left: 0px;
         margin: 0 auto;
         width: 100%;
