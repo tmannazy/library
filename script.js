@@ -3,65 +3,65 @@
 //         title: 'Think & Grow Rich',
 //         author: 'Napoleon Hill',
 //         pages: 260,
-//         read: true
+//         read: 'Yes'
 //     },
 //     {
 //         title: 'Purpose Driven Life',
 //         author: 'Rick Warrens',
 //         pages: 500,
-//         read: true
+//         read: 'Yes'
 //     }, {
 //         title: 'The Alchemist',
 //         author: 'Paulo Coelho', pages: 208,
-//         read: true
+//         read: 'Yes'
 //     }, {
 //         title: 'Richest Man in Babylon',
 //         author: 'George Samuel Clason',
 //         pages: 144,
-//         read: true
+//         read: 'Yes'
 //     },
 //     {
 //         title: 'Progit',
 //         author: 'Ben Straub & Scott Chacon',
 //         pages: 513,
-//         read: false
+//         read: 'No'
 //     },
 //     {
 //         title: 'Grit The Power of Passion and Perseverance',
 //         author: 'Angela Duckworth',
 //         pages: 513,
-//         read: false
+//         read: 'No'
 //     },
 //     {
 //         title: '56 Win Streak',
 //         author: 'Joe DiMaggio',
 //         pages: 30,
-//         read: true
+//         read: 'Yes'
 //     },
 //     {
 //         title: 'Code Daily',
 //         author: 'Madison Kanna',
 //         pages: 25,
-//         read: true
+//         read: 'Yes'
 //     },
 //     {
 //         title: 'Eloquent JavaScript',
 //         author: 'Marijn Haverbeke',
 //         pages: 388,
-//         read: false
+//         read: 'No'
 //     },
 //     {
 //         title: 'YDKJS',
 //         author: 'Kyle Simpson',
 //         pages: 300,
-//         read: false
+//         read: 'No'
 //     }
 // ];
 let myLibrary = [{
     title: 'YDKJS',
     author: 'Kyle Simpson',
     pages: 300,
-    read: false,
+    read: 'Yes',
     comment: 'After reading this book you will affirm you don\'t know JS truly.'
 }];
 
@@ -70,7 +70,7 @@ function Book(id, title, author, pages, read, comment) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read == 'yes' ? true : false;
+    this.read = read == 'yes' ? 'Yes' : 'No';
     this.comment = comment;
 };
 
@@ -86,7 +86,7 @@ const addBookToLibrary = e => {
     let bookObj = new Book(id, title, author, pages, read, comment);
     myLibrary.push(bookObj);
     saveArrData();
-    // displayLibrary();
+    displayLibrary();
 };
 
 let button = document.querySelector('#submit');
@@ -113,7 +113,11 @@ const displayLibrary = () => {
         toggleButtonInput.setAttribute('type', 'checkbox');
         toggleButtonInput.setAttribute('name', 'toggle');
         toggleButtonSpan.className = 'slider';
-
+        // if (`${Object.values(obj)[4]}` === ''Yes'') {
+        //     toggleButtonSpan.style.backgroundColor = '#5A18CD';
+        // } else {
+        //     toggleButtonSpan.style.backgroundColor = '#ef0717';
+        // }
         for (let prop in obj) {
             const bookDivData = document.createElement('div');
             switch (prop) {
@@ -133,6 +137,11 @@ const displayLibrary = () => {
                     break;
                 case 'read':
                     bookDivData.textContent = `Read: ${obj[prop]}`;
+                    if (`${obj[prop]}` === 'Yes') {
+                        toggleButtonSpan.style.backgroundColor = '#5A18CD';
+                    } else {
+                        toggleButtonSpan.style.backgroundColor = '#ef0717';
+                    }
                     bookDivData.className = 'read';
                     break;
                 case 'comment':
@@ -214,15 +223,15 @@ const changeStatus = () => {
             myLibrary.forEach((book, index) => {
                 let cellChange;
                 if (index === divToChange) {
-                    if (book['read'] == false) {
-                        book['read'] = true;
+                    if (book['read'] == 'No') {
+                        book['read'] = 'Yes';
                         cellChange = Array.from(divToChangeIndex.children)[3];
-                        cellChange.textContent = 'Read: true';
+                        cellChange.textContent = 'Read: Yes';
                     }
                     else {
-                        book['read'] = false;
+                        book['read'] = 'No';
                         cellChange = Array.from(divToChangeIndex.children)[3];
-                        cellChange.textContent = 'Read: false';
+                        cellChange.textContent = 'Read: No';
                     }
                 }
             });
