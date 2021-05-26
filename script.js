@@ -219,7 +219,6 @@ const changeStatus = () => {
             myLibrary.forEach((book, index) => {
                 let cellChange;
                 let changeBtnColor = Array.from(document.querySelectorAll('.slider'));
-                // let changeBtnColor = document.querySelector('.slider');
                 if (index === divToChange) {
                     if (book['read'] == 'No') {
                         book['read'] = 'Yes';
@@ -238,26 +237,22 @@ const changeStatus = () => {
             });
         });
     });
-
 };
 
 // Save user input to localStorage
 const saveArrData = () => {
     localStorage.setItem('myLibraryData', JSON.stringify(myLibrary));
-    let retrieveSavedArr = localStorage.getItem('myLibraryData');
-    isArrData(retrieveSavedArr);
 }
 
 // Confirm if array exists in localStorage
-const isArrData = arr => {
-    let keys = Object.keys(localStorage);
-    for (let key of keys) {
-        if (localStorage.getItem(key) === arr) {
-            continue;
-        }
-        else {
-            localStorage.setItem(key, JSON.stringify(myLibrary));
-        }
+const isArrData = () => {
+    if (!localStorage.myLibraryData) {
+        displayLibrary();
+    } else {
+        let retrieveSavedArr = localStorage.getItem('myLibraryData');
+        retrieveSavedArr = JSON.parse(retrieveSavedArr);
+        myLibrary = retrieveSavedArr;
+        displayLibrary();
     }
 }
-displayLibrary();
+isArrData();
