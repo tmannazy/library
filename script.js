@@ -250,6 +250,7 @@ const saveArrData = () => {
 // Confirm if array exists in localStorage
 const isArrData = () => {
     if (!localStorage.myLibraryData) {
+        saveArrData();
         displayLibrary();
     } else {
         let retrieveSavedArr = localStorage.getItem('myLibraryData');
