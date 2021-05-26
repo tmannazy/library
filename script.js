@@ -176,6 +176,9 @@ const bookToDelete = () => {
             if (divBookId === item.id) {
                 myLibrary.splice(index, 1);
                 divToRemove.remove();
+            } else {
+                myLibrary.splice(0, 1);
+                divToRemove.remove();
             }
         });
     };
