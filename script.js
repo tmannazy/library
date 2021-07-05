@@ -65,14 +65,16 @@ let myLibrary = [{
     comment: 'After reading this book you will affirm you don\'t know JS truly.'
 }];
 
-function Book(id, title, author, pages, read, comment) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read == 'yes' ? 'Yes' : 'No';
-    this.comment = comment;
-};
+class Book {
+    constructor(id, title, author, pages, read, comment) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read == 'yes' ? 'Yes' : 'No';
+        this.comment = comment;
+    }
+}
 
 const addBookToLibrary = e => {
     e.preventDefault();
